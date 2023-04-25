@@ -1,3 +1,12 @@
 .edit-button {
-  transform: translateX(120px);
+  padding: 35px 0 0 10px;
+  width: 18px;
+  height: 18px;
+}
+@media (min-width: 900px) {
+  .edit-button {
+    padding: 42px 0 0 18px;
+    width: 24px;
+    height: 24px;
+  }
 }
