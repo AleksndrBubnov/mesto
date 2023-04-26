@@ -1,12 +1,18 @@
 .edit-button {
-  padding: 35px 0 0 10px;
   width: 18px;
   height: 18px;
+  margin: 35px 0 0 10px;
+
+  background-image: url("../../images/edit-button-18.svg");
+  background-color: #000000;
+  border: 0px;
 }
 @media (min-width: 900px) {
   .edit-button {
-    padding: 42px 0 0 18px;
     width: 24px;
     height: 24px;
+    margin: 42px 0 0 18px;
+
+    background-image: url("../../images/edit-button-24.svg");
   }
 }

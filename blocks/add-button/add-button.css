@@ -5,12 +5,12 @@
   margin: 0;
   padding: 0;
 
-  border: 0px;
   background-image: url("../../images/add-button-282.svg");
+  border: 0px;
   background-color: #000000;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 920px) {
   .add-button {
     width: 150px;
     height: 50px;

@@ -10,7 +10,7 @@
   font-family: 'Inter', Arial, sans-serif;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 920px) {
   .profile {
     flex-direction: row;
     min-width: 880px;
