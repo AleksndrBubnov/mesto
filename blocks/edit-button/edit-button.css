@@ -7,7 +7,7 @@
   background-color: #000000;
   border: 0px;
 }
-@media (min-width: 900px) {
+@media (min-width: 920px) {
   .edit-button {
     width: 24px;
     height: 24px;
