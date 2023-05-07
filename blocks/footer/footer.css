@@ -7,7 +7,7 @@
 
 @media (min-width: 768px) {
   .footer {
-    min-width: calc((2 * 282px) + 20px)
+    min-width: calc((2 * 282px) + 20px);
   }
 }
 
