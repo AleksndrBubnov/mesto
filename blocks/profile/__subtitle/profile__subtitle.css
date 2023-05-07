@@ -1,6 +1,11 @@
 .profile__subtitle {
+  max-width: 288px;
   margin: 0;
   padding: 14px 0 36px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   font-family: 'Inter';
   font-style: normal;
@@ -11,6 +16,10 @@
 
 @media (min-width: 920px) {
   .profile__subtitle {
+    align-self: start;
+
+    padding: 14px 0 0px;
+
     font-size: 18px;
     line-height: 22px;
   }

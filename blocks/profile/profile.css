@@ -14,5 +14,7 @@
     flex-direction: row;
     min-width: 880px;
     max-width: 880px;
+
+    padding: 40px 0 0;
   }
 }
