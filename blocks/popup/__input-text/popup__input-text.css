@@ -1,21 +1,13 @@
 .popup__input-text {
-  width: 238px;
+  width: 100%;
   margin: 30px auto  0;
   padding: 0 0 10px;
 
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
 
   border: none;
-  border-bottom: 1px solid #cccccc;
-}
-
-@media (min-width: 920px) {
-  .popup__input-text {
-    width: 358px;
-    
-  }
+  border-bottom: 1px solid rgb(204,204,204, .2);
 }

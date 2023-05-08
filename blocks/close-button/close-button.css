@@ -14,6 +14,10 @@
   cursor: pointer;
 }
 
+.close-button:hover {
+  opacity: .6;
+}
+
 @media (min-width: 920px) {
   .close-button {
     right: -40px;

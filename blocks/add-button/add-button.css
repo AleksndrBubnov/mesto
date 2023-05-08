@@ -10,6 +10,10 @@
   background-color: #000000;
 }
 
+.add-button:hover {
+  opacity: .6;
+}
+
 @media (min-width: 920px) {
   .add-button {
     width: 150px;
