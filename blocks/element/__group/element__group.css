@@ -6,3 +6,9 @@
   margin: 0;
   padding: 25px 30px 31px 21px;
 }
+
+@media (min-width: 920px) {
+  .element__group {
+    padding: 25px 21px 26px;
+  }
+}
