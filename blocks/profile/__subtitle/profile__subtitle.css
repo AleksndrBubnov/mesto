@@ -1,12 +1,13 @@
 .profile__subtitle {
-  max-width: 288px;
+  max-width: 187px;
   margin: 0;
-  padding: 14px 0 36px;
+  padding: 8px 0 32px;
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
+  letter-spacing: 0.045em;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -16,7 +17,8 @@
 @media (min-width: 920px) {
   .profile__subtitle {
     align-self: start;
-
+    
+    max-width: 295px;
     padding: 10px 0 0px;
 
     font-size: 18px;

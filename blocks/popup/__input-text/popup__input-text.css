@@ -3,6 +3,7 @@
   margin: 30px auto  0;
   padding: 0 0 10px;
 
+  letter-spacing: 0.045em;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -10,4 +11,10 @@
 
   border: none;
   border-bottom: 1px solid rgb(204,204,204, .2);
+}
+
+@media (min-width: 920px) {
+  .popup__input-text {  
+    margin: 26px auto  0;
+  }
 }
