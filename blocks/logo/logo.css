@@ -2,13 +2,12 @@
   width: 104px;
   height: 25px;
   margin: 0;
-  padding: 0 0 30px 27px;
+  padding: 0;
 }
 
 @media (min-width: 920px) {
   .logo {
     width: 142px;
     height: 33px;
-    padding: 0 0 41px 0;
   }
 }

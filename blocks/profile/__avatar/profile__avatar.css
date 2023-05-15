@@ -5,5 +5,8 @@
   margin: 0;
   padding: 0;
 
+  object-fit: cover;
+  object-position: bottom;
+
   border-radius: 50%;
 }

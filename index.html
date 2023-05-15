@@ -12,7 +12,7 @@
 
 <body class="page">
   <header class="header">
-    <img class="logo" src="./images/logo-mesto-dark.png" alt="место лого">
+    <img class="logo" src="./images/logo_mesto_russia.svg" alt="место лого">
   </header>
 
   <main class="content">
@@ -22,9 +22,9 @@
       <div class="profile__group">
         <div class="profile__container">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <p class="profile__subtitle">Исследователь океана</p>
+          <button class="button profile__edit-button" name="button"></button>
         </div>
-        <button class="button profile__edit-button" name="button"></button>
+        <p class="profile__subtitle">Исследователь океана</p>
       </div>
 
       <button class="button profile__add-button" name="button"></button>
@@ -43,7 +43,7 @@
         <img class="element__image" src="./images/Elbrus.png" alt="Гора Эльбрус">
         <div class="element__group">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button class="button element__like-button" name="button"></button>
+          <button class="button element__like-button  element__like-button_active" name="button"></button>
         </div>
       </article>
 
@@ -51,7 +51,7 @@
         <img class="element__image" src="./images/Dombay.png" alt="Домбай">
         <div class="element__group">
           <h2 class="element__title">Домбай</h2>
-          <button class="button element__like-button" name="button"></button>
+          <button class="button element__like-button  element__like-button_active" name="button"></button>
         </div>
       </article>
 
@@ -86,16 +86,17 @@
   </footer> 
 
   <section class="popup">
-    <div class="popup__container">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      
-      <form class="popup__form" name="popup">
-        <input class="popup__input-text popup__input-title" placeholder="Имя" type="text" name="name">
-        <input class="popup__input-text popup__input-subtitle" placeholder="О себе" type="text" name="brief">
-        <button class="button popup__submit" type="submit">Сохранить</button>
-      </form>
-
+    <div class="popup__group">
       <button type="button" class="button popup__close-button"></button>
+
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="popup">
+          <input class="popup__input-text popup__input-text_type_title" placeholder="Имя" type="text" name="name">
+          <input class="popup__input-text popup__input-text_type_subtitle" placeholder="О себе" type="text" name="brief">
+          <button class="button popup__submit" type="submit">Сохранить</button>
+        </form>
+      </div>
     </div>
   </section>
 
