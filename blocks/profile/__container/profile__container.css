@@ -1,7 +1,7 @@
 .profile__container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 0;
   padding: 0 0 0 24px;
@@ -9,6 +9,7 @@
 
 @media (min-width: 920px) {
   .profile__container {
+    justify-content: space-between;
     padding: 0;
   }
 }
