@@ -22,6 +22,11 @@ const popupAddForm = popupAddElement.querySelector('.popup__form');
 const popupAddInpitName = popupAddElement.querySelector('.popup__input-text_type_name');
 const popupAddInpitLink = popupAddElement.querySelector('.popup__input-text_type_link');
 
+//popup_type_image
+const popupImageCardElement = document.querySelector('.popup__image-place');
+const popupImagePictureElement = document.querySelector('.popup__image');
+const popupImageNameElement = document.querySelector('.popup__image-name');
+
 // Карточки
 const initialCards = [
   {
@@ -48,10 +53,6 @@ const initialCards = [
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   },
-  {
-    name: 'Арарат',
-    link: 'https://images.unsplash.com/photo-1598304339149-7c7d3d6cfc52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80',
-  }
 ];
 const cardsSectionElement = document.querySelector('.elements');
 const cardTemplateElement = document.querySelector('#card-template').content.querySelector('.element');
@@ -70,6 +71,12 @@ const openPopup = function (popup) {
 const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
 }
+//функция закрытия попапов по оверлею
+function closeOverlay(evt) {
+  if (evt.currentTarget === evt.target || evt.target.classList.contains("popup__close-button")) {
+    closePopup(evt.currentTarget);
+  };
+};
 
 //отрытие попапов
 popupEditButtonElement.addEventListener('click', function () {
@@ -81,22 +88,17 @@ popupAddButtonElement.addEventListener('click', function () {
   openPopup(popupAddElement);
 });
 
-//Закрытие попапов
-//функция закрытия попапов по оверлею
-function closeOverlay(evt) {
-  if (evt.currentTarget === evt.target || evt.target.classList.contains("popup__close-button")) {
-    closePopup(evt.currentTarget);
-  };
-};
-//обработчики закрытия попапов
+// открытие попапа картинки
+function handleClickImage (name, link) {
+  openPopup(popupImageElement);
+  popupImageNameElement.textContent = name;
+  popupImagePictureElement.src = link;
+}
+
+//закрытие попапов
 popupEditElement.addEventListener('click', closeOverlay);
 popupAddElement.addEventListener('click', closeOverlay);
 popupImageElement.addEventListener('click', closeOverlay);
-
-//Обработка клика по картинке
-function handleClickImage (name, link) {
-}
-
 
 //функц. выражение редактирования профиля
 const editProfile = function (event) {
@@ -109,11 +111,19 @@ const editProfile = function (event) {
 //функц. выражение добавления карточки
 const addCard = function (event) {
   event.preventDefault();
-
   createCard(popupAddInpitName.value, popupAddInpitLink.value, 'prepend')
-
   closePopup(popupAddElement);
   event.target.reset();
+}
+
+// функция лайка карточки
+function likeCard(evt) {
+  evt.currentTarget.classList.toggle('element__like-button_active');
+};
+
+//функция удаления карточки
+function deleteCard (card) {
+  card.remove();
 }
 
 popupForm.addEventListener('submit', editProfile);
@@ -126,7 +136,7 @@ function createCard(name, link, key) {
   const cardLikeButton = cardElement.querySelector('.element__like-button');
   const cardDeleteButton = cardElement.querySelector('.element__delete-button');
 
-  //обработка клика на картинку
+  //обработка клика по картинке
   cardImage.addEventListener('click', () => {
     handleClickImage(name, link);
   })
@@ -138,7 +148,6 @@ function createCard(name, link, key) {
   cardDeleteButton.addEventListener('click', () => {
     deleteCard(cardElement);
   })
-
 
   cardTitle.textContent = name;
   cardImage.src = link;
@@ -155,13 +164,3 @@ function createCard(name, link, key) {
 initialCards.forEach((item, index) => {
   createCard(initialCards[index].name, initialCards[index].link, 'append');
 });
-
-//функция удаления карточки
-function deleteCard (card) {
-  card.remove();
-}
-
-// функция лайка карточки
-function likeCard(evt) {
-  evt.currentTarget.classList.toggle('element__like-button_active');
-};
