@@ -46,6 +46,13 @@ function closeByOverlayOrButton(evt) {
   };
 };
 
+function closeByEscape(evt){
+  if (evt.key === 'Escape') {
+    console.log(evt.key);
+    closePopup(evt.currentTarget);
+  }
+};
+
 //отрытие попапов
 popupEditOpenButtonElement.addEventListener('click', function () {
   openPopup(popupEditElement);
@@ -68,6 +75,7 @@ function handleClickImage(name, link) {
 popupEditElement.addEventListener('click', closeByOverlayOrButton);
 popupAddElement.addEventListener('click', closeByOverlayOrButton);
 popupImageElement.addEventListener('click', closeByOverlayOrButton);
+document.addEventListener('keydown', closeByEscape);
 
 //функц. выражение редактирования профиля
 const editProfile = function (event) {
@@ -128,6 +136,7 @@ function addCard(cardElement, key) {
 
 // функция лайка карточки
 function likeCard(evt) {
+
   evt.currentTarget.classList.toggle('element__like-button_active');
 };
 
@@ -139,3 +148,7 @@ function deleteCard(card) {
 initialCards.forEach(item => {
   addCard(createCard(item.name, item.link), 'append');
 });
+
+
+
+

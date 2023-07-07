@@ -11,6 +11,11 @@
 * Добавил открытие картинки карточек в виде модального окна
 * Добавил удаление карточки по клику на соответствующую иконку карточки
 * Изменил процесс открытия и закрытия модальных окон, сделав их более плавными
+*
+*
+*
+*
+*
 
 
 **Ссылка на сайт**
@@ -22,4 +27,6 @@
 * Верстал проект по данному макету
 * [Первый макет](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 * Продолжил работу уже по этому макету
-* [Вторйо макет](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=50160%3A172)
+* [Второй макет](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=50160%3A172)
+* А завершил по этому макету
+* [Третий макет](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)

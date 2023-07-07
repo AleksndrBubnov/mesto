@@ -1,0 +1,13 @@
+.error {
+  z-index: 1;
+  display: block;
+  box-sizing: border-box;
+
+  height: 25px;
+  margin: 5px 0 -27px;
+
+  font-size: 12px;
+  line-height: 14.52px;
+  font-weight: 400;
+  color: #FF0000;
+}
