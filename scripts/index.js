@@ -138,13 +138,16 @@ popups.forEach((popup) => {
 
 // функция добавления карточки в контейнер по ключу
 function addCard(cardElement, key) {
-  if (key === 'append') {
-    cardsSectionElement.append(cardElement);
-  }
-  if (key === 'prepend') {
-    cardsSectionElement.prepend(cardElement);
-  }
-}
+  cardsSectionElement[key](cardElement);
+} 
+// function addCard(cardElement, key) {
+//   if (key === 'append') {
+//     cardsSectionElement.append(cardElement);
+//   }
+//   if (key === 'prepend') {
+//     cardsSectionElement.prepend(cardElement);
+//   }
+// }
 
 //функц. выражение добавления карточки
 const renderCard = function (event) {
