@@ -1,72 +1,27 @@
+import { 
+  popups,
+  popupEditElement,
+  popupEditOpenButtonElement,
+  popupEditForm,
+  popupInpitTitle,
+  popupInpitSubtitle,
+  profileTitle,
+  profileSubtitle,
+  popupAddElement,
+  popupAddOpenButtonElement,
+  popupAddForm,
+  popupAddInpitName,
+  popupAddInpitLink,
+  popupImageElement,
+  popupImagePictureElement,
+  popupImageNameElement,
+  initialCards,
+  cardsSectionElement,
+  cardTemplateSelector,
+  config
+} from "./constants.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-
-//все попапы
-const popups = document.querySelectorAll('.popup');
-
-//popup_type_edit
-const popupEditElement = document.querySelector('.popup_type_edit');
-const popupEditOpenButtonElement = document.querySelector('.profile__edit-button');
-const popupEditForm = popupEditElement.querySelector('.popup__form');
-const popupInpitTitle = popupEditElement.querySelector('.popup__input-text_type_title');
-const popupInpitSubtitle = popupEditElement.querySelector('.popup__input-text_type_subtitle');
-const popupEditSubmitButton = popupEditElement.querySelector('.popup__submit');
-
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-
-//popup_type_add
-const popupAddElement = document.querySelector('.popup_type_add');
-const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
-const popupAddForm = popupAddElement.querySelector('.popup__form');
-const popupAddInpitName = popupAddElement.querySelector('.popup__input-text_type_name');
-const popupAddInpitLink = popupAddElement.querySelector('.popup__input-text_type_link');
-const popupAddSubmitButton = popupAddElement.querySelector('.popup__submit');
-
-//popup_type_image
-const popupImageElement = document.querySelector('.popup_type_image');
-const popupImageCardElement = popupImageElement.querySelector('.popup__image-place');
-const popupImagePictureElement = popupImageElement.querySelector('.popup__image');
-const popupImageNameElement = popupImageElement.querySelector('.popup__image-name');
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  },
-];
-
-// Захват контейнера и селектора шаблона карточек
-const cardsSectionElement = document.querySelector('.elements');
-const cardTemplateSelector = '.card-template';
-
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input-text',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_invalid',
-  inputErrorClass: 'popup__input-text_type_error'
-}
 
 // Создаения объектов валидации
 const popupEditFormValidation = new FormValidator(config, popupEditForm);
