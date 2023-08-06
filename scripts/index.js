@@ -68,6 +68,13 @@ const config = {
   inputErrorClass: 'popup__input-text_type_error'
 }
 
+// Создаения объектов валидации
+const popupEditFormValidation = new FormValidator(config, popupEditForm);
+const popupAddFormValidation = new FormValidator(config, popupAddForm);
+
+popupEditFormValidation.enableValidation();
+popupAddFormValidation.enableValidation();
+
 // функция заполнения полей попапа редактирования профиля
 function fillEditPopupInputs() {
   popupInpitTitle.value = profileTitle.textContent;
@@ -115,12 +122,16 @@ function closeByEscape(event){
 popupEditOpenButtonElement.addEventListener('click', function () {
   openPopup(popupEditElement);
   fillEditPopupInputs();
-  enabledButton(popupEditSubmitButton, config);
+  popupEditFormValidation.resetValidation();
+  popupEditFormValidation.enabledButton();
+  // enabledButton(popupEditSubmitButton, config);
 });
 
 popupAddOpenButtonElement.addEventListener('click', function () {
   openPopup(popupAddElement);
-  disabledButton(popupAddSubmitButton, config);
+  popupAddFormValidation.resetValidation();
+  popupAddFormValidation.disabledButton();
+  // disabledButton(popupAddSubmitButton, config);
 });
 
 // открытие попапа картинки
@@ -131,6 +142,17 @@ export function handleClickImage(name, link) {
   popupImagePictureElement.src = link;
 }
 
+// export function handleCardClick(name, link) {
+//   // устанавливаем ссылку
+//   popupImagePictureElement.src = link;
+
+//   // устанавливаем подпись картинке
+//   popupImagePictureElement.alt = name;
+
+//   // открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
+//   openPopup(popupImageElement);
+// }
+
 //закрытие попапов
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', closeByOverlayOrButton);
@@ -140,6 +162,7 @@ popups.forEach((popup) => {
 function addCard(cardElement, key) {
   cardsSectionElement[key](cardElement);
 } 
+
 // function addCard(cardElement, key) {
 //   if (key === 'append') {
 //     cardsSectionElement.append(cardElement);
@@ -149,8 +172,13 @@ function addCard(cardElement, key) {
 //   }
 // }
 
+function createCard (data, cardTemplateSelector) {
+  const card = new Card(data, cardTemplateSelector).generateCard();
+  return card;
+}
+
 //функц. выражение добавления карточки
-const renderCard = function (event) {
+const renderFormCard = function (event) {
   event.preventDefault();
   // addCard(createCard(popupAddInpitName.value, popupAddInpitLink.value), 'prepend');
 
@@ -159,32 +187,19 @@ const renderCard = function (event) {
     link: popupAddInpitLink.value
   }
 
-  const addFormCard = new Card(addFormData, cardTemplateSelector);
+  addCard(createCard(addFormData, cardTemplateSelector), 'prepend');
 
-  addCard(addFormCard.generateCard(), 'prepend');
   closePopup(popupAddElement);
   event.target.reset();
 }
 
-popupAddForm.addEventListener('submit', renderCard);
+popupAddForm.addEventListener('submit', renderFormCard);
 
 // Создание карточек и добавление их в карточный контейнер (пока что .Elements)
 initialCards.forEach(function(item){
-  const card = new Card(item, cardTemplateSelector);
-  const cardElement = card.generateCard();
-  cardsSectionElement.append(cardElement);
+  // const card = new Card(item, cardTemplateSelector);
+  // const cardElement = card.generateCard();
+  // cardsSectionElement.append(cardElement);
+  
+  addCard(createCard(item, cardTemplateSelector), 'append');
 });
-
-// Создаения объектов валидации
-const formValidation = new FormValidator(config).enableValidation();
-
-// вкл/выкл кнопки формы
-function enabledButton(buttonElement, config) {
-  buttonElement.disabled = false;
-  buttonElement.classList.remove(config.inactiveButtonClass);
-}
-
-function disabledButton(buttonElement, config) {
-  buttonElement.disabled = true;
-  buttonElement.classList.add(config.inactiveButtonClass);
-}
