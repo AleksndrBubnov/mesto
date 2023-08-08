@@ -1,18 +1,12 @@
 export class FormValidator {
   #config
   #formElement
-  #form 
   #inputList
   #submitButton
+  #form 
   #cardImage 
   #likeButton
 
-  // formSelector: '.popup__form',
-  // inputSelector: '.popup__input-text',
-  // submitButtonSelector: '.popup__submit',
-  // inactiveButtonClass: 'popup__submit_invalid',
-  // inputErrorClass: 'popup__input-text_type_error'
-  
   constructor(config, formElement) {
     this.#config = config;
     this.#formElement = formElement;
@@ -20,6 +14,13 @@ export class FormValidator {
  
   enableValidation() {
     this.#setEventListener();
+  }
+
+  resetValidation() {
+    this.#inputList.forEach((inputElement) => {
+      const errorElement = this.#formElement.querySelector(`#${inputElement.name}-error`);
+      this.#hideError(inputElement, errorElement);
+    });
   }
 
   enabledButton() {
@@ -31,21 +32,11 @@ export class FormValidator {
     this.#submitButton.disabled = true;
     this.#submitButton.classList.add(this.#config.inactiveButtonClass);
   }
-
-  //работает наоборот 
-  resetValidation() {
-    // this.#toggleButtonState(true);
-    
-    this.#inputList.forEach((inputElement) => {
-      const errorElement = this.#formElement.querySelector(`#${inputElement.name}-error`);
-      this.#hideError(inputElement, errorElement);
-    });
-  }
-  
+ 
   #setEventListener() {
-    this.#form =  this.#formElement.querySelector(this.#config.formSelector);
     this.#inputList = this.#formElement.querySelectorAll(this.#config.inputSelector);
     this.#submitButton = this.#formElement.querySelector(this.#config.submitButtonSelector);
+    // this.#form =  this.#formElement.querySelector(this.#config.formSelector);
     // this.#cardImage =  this.#formElement.querySelector(this.#config.);
     // this.#likeButton =  this.#formElement.querySelector(this.#config.);
   

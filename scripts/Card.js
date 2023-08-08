@@ -16,12 +16,6 @@ export class Card {
     this.#template = templateSelector;
   }
 
-  #getTemplate() {
-    const cardTemplate = document.querySelector(this.#template).content.querySelector('.element').cloneNode(true);
-
-    return cardTemplate;
-  }
-
   generateCard() {
     this.#cardElement = this.#getTemplate();
       this.#cardTitle = this.#cardElement.querySelector('.element__title');
@@ -37,6 +31,16 @@ export class Card {
 
     return this.#cardElement;
   }
+  
+  #getTemplate() {
+    const cardTemplate = document
+    .querySelector(this.#template)
+    .content
+    .querySelector('.element')
+    .cloneNode(true);
+
+    return cardTemplate;
+  }
 
   #setEventListeners() {
     this.#cardImage.addEventListener('click', () => {
@@ -47,7 +51,6 @@ export class Card {
       this.#cardLikeButton.classList.toggle('element__like-button_active');
     });
   
-    // //обработка кнопки удаления
     this.#cardDeleteButton.addEventListener('click', () => {
       deleteCard(this.#cardElement);
     });
