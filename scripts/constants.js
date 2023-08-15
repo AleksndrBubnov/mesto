@@ -67,10 +67,6 @@ export const initialCards = [
     name: 'Иди и смотри',
     link: 'https://avatars.yandex.net/get-music-content/2811629/8f999f47.a.12318349-1/m1000x1000'
   },
-  // {
-  //   name: 'Химия',
-  //   link: 'https://avatars.yandex.net/get-music-content/2399641/80dfee5b.a.9267902-1/m1000x1000'
-  // },
   {
     name: 'Ивар',
     link: 'https://avatars.yandex.net/get-music-content/4382806/136dcf1c.a.14056493-1/m1000x1000'
@@ -79,6 +75,10 @@ export const initialCards = [
   {
     name: 'Сказка о потерянном времени',
     link: 'https://avatars.yandex.net/get-music-content/5417945/59f3dea8.a.18893830-1/m1000x1000'
+  },
+  {
+    name: 'Химия',
+    link: 'https://avatars.yandex.net/get-music-content/2399641/80dfee5b.a.9267902-1/m1000x1000'
   },
 ];
 
