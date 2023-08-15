@@ -27,29 +27,58 @@ export const popupImagePictureElement = popupImageElement.querySelector('.popup_
 export const popupImageNameElement = popupImageElement.querySelector('.popup__image-name');
 
 export const initialCards = [
+  // {
+  //   name: 'Архыз',
+  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  // },
+  // {
+  //   name: 'Челябинская область',
+  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  // },
+  // {
+  //   name: 'Иваново',
+  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  // },
+  // {
+  //   name: 'Камчатка',
+  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  // },
+  // {
+  //   name: 'Холмогорский район',
+  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  // },
+  // {
+  //   name: 'Байкал',
+  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  // },
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'PAINKILLER',
+    link: 'https://avatars.yandex.net/get-music-content/28589/7f67a401.a.3763620-1/m1000x1000'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'ПОВЕСТКА',
+    link: 'https://avatars.yandex.net/get-music-content/2355477/be20c9fd.a.12424219-1/m1000x1000'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'KONSTRUKT',
+    link: 'https://avatars.yandex.net/get-music-content/9707577/604ca63a.a.26546740-1/m1000x1000'
   },
   {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Иди и смотри',
+    link: 'https://avatars.yandex.net/get-music-content/2811629/8f999f47.a.12318349-1/m1000x1000'
   },
+  // {
+  //   name: 'Химия',
+  //   link: 'https://avatars.yandex.net/get-music-content/2399641/80dfee5b.a.9267902-1/m1000x1000'
+  // },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Ивар',
+    link: 'https://avatars.yandex.net/get-music-content/4382806/136dcf1c.a.14056493-1/m1000x1000'
   },
+  
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Сказка о потерянном времени',
+    link: 'https://avatars.yandex.net/get-music-content/5417945/59f3dea8.a.18893830-1/m1000x1000'
   },
 ];
 
