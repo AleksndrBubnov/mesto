@@ -28,7 +28,7 @@
       <button class="button profile__add-button" aria-label="add-button" type="button"></button>
     </section>
 
-    <section class="elements">
+    <section class="card-section">
       <!-- template id="card-template" -->
     </section>
   </main>
@@ -44,7 +44,7 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="popup">
           <input 
-            class="popup__input-text popup__input-text_type_title" 
+            class="popup__input popup__input_type_title" 
             minlength="2" 
             maxlength="40" 
             placeholder="Имя" 
@@ -54,7 +54,7 @@
           >
           <span id="title-error" class="error" ></span>
           <input 
-            class="popup__input-text popup__input-text_type_subtitle" 
+            class="popup__input popup__input_type_subtitle" 
             minlength="2" 
             maxlength="200" 
             placeholder="О себе" 
@@ -76,7 +76,7 @@
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form" name="popup">
           <input 
-            class="popup__input-text popup__input-text_type_name"
+            class="popup__input popup__input_type_name"
             minlength="2" 
             maxlength="30" 
             placeholder="Название" 
@@ -86,7 +86,7 @@
           >
           <span id="name-error" class="error" ></span>
           <input 
-            class="popup__input-text popup__input-text_type_link" 
+            class="popup__input popup__input_type_link" 
             placeholder="Ссылка на картинку" 
             type="url"
             name="link" 
@@ -110,12 +110,12 @@
   </section>
 
   <template id="card-template" class="card-template">
-    <article class="element">
-      <img class="button element__image" src="https://example.jpg" alt="">
-      <button class="button element__delete-button" aria-label="delete-button" type="button"></button>
-      <div class="element__group">
-        <h2 class="element__title"></h2>
-        <button class="button element__like-button" aria-label="like-button" type="button"></button>
+    <article class="card">
+      <img class="button card__image" src="https://example.jpg" alt="">
+      <button class="button card__delete-button" aria-label="delete-button" type="button"></button>
+      <div class="card__group">
+        <h2 class="card__title"></h2>
+        <button class="button card__like-button" aria-label="like-button" type="button"></button>
       </div>
     </article>
   </template>

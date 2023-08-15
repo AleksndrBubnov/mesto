@@ -150,7 +150,6 @@ const renderFormCard = function (event) {
 
 popupAddForm.addEventListener('submit', renderFormCard);
 
-// Создание карточек и добавление их в карточный контейнер (пока что .Elements)
 initialCards.forEach(function(item){
   // const card = new Card(item, cardTemplateSelector);
   // const cardElement = card.generateCard();

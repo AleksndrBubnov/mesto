@@ -18,10 +18,10 @@ export class Card {
 
   generateCard() {
     this.#cardElement = this.#getTemplate();
-      this.#cardTitle = this.#cardElement.querySelector('.element__title');
-      this.#cardImage = this.#cardElement.querySelector('.element__image');
-      this.#cardLikeButton = this.#cardElement.querySelector('.element__like-button');
-      this.#cardDeleteButton = this.#cardElement.querySelector('.element__delete-button');
+      this.#cardTitle = this.#cardElement.querySelector('.card__title');
+      this.#cardImage = this.#cardElement.querySelector('.card__image');
+      this.#cardLikeButton = this.#cardElement.querySelector('.card__like-button');
+      this.#cardDeleteButton = this.#cardElement.querySelector('.card__delete-button');
     
     this.#cardTitle .textContent = this.#name;
     this.#cardImage.src = this.#link;
@@ -36,7 +36,7 @@ export class Card {
     const cardTemplate = document
     .querySelector(this.#template)
     .content
-    .querySelector('.element')
+    .querySelector('.card')
     .cloneNode(true);
 
     return cardTemplate;
@@ -48,7 +48,7 @@ export class Card {
     });
   
     this.#cardLikeButton.addEventListener('click', () => {
-      this.#cardLikeButton.classList.toggle('element__like-button_active');
+      this.#cardLikeButton.classList.toggle('card__like-button_active');
     });
   
     this.#cardDeleteButton.addEventListener('click', () => {
@@ -58,40 +58,9 @@ export class Card {
 }
 
 export function likeCard(event) {
-  event.currentTarget.classList.toggle('element__like-button_active');
+  event.currentTarget.classList.toggle('card__like-button_active');
 };
 
 export function deleteCard(card) {
   card.remove();
 }
-
-// //**** Создании карточки, реализованное в функциональном стиле ****
-
-// const cardTemplateElement = document.querySelector(cardTemplateSelector).content.querySelector('.element').cloneNode(true);
-
-// function createCard(name, link) {
-//   const cardElement = cardTemplateElement;
-//   const cardTitle = cardElement.querySelector('.element__title');
-//   const cardImage = cardElement.querySelector('.element__image');
-//   const cardLikeButton = cardElement.querySelector('.element__like-button');
-//   const cardDeleteButton = cardElement.querySelector('.element__delete-button');
-
-//   //обработка клика по картинке
-//   cardImage.addEventListener('click', () => {
-//     handleClickImage(name, link);
-//   });
-
-//   //обработка лайка
-//   cardLikeButton.addEventListener('click', likeCard);
-
-//   //обработка кнопки удаления
-//   cardDeleteButton.addEventListener('click', () => {
-//     deleteCard(cardElement);
-//   });
-
-//   cardTitle.textContent = name;
-//   cardImage.src = link;
-//   cardImage.alt = name;
-
-//   return cardElement;
-// };

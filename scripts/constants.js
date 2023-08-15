@@ -5,8 +5,8 @@ export const popups = document.querySelectorAll('.popup');
 export const popupEditElement = document.querySelector('.popup_type_edit');
 export const popupEditOpenButtonElement = document.querySelector('.profile__edit-button');
 export const popupEditForm = popupEditElement.querySelector('.popup__form');
-export const popupInpitTitle = popupEditElement.querySelector('.popup__input-text_type_title');
-export const popupInpitSubtitle = popupEditElement.querySelector('.popup__input-text_type_subtitle');
+export const popupInpitTitle = popupEditElement.querySelector('.popup__input_type_title');
+export const popupInpitSubtitle = popupEditElement.querySelector('.popup__input_type_subtitle');
 export const popupEditSubmitButton = popupEditElement.querySelector('.popup__submit');
 
 export const profileTitle = document.querySelector('.profile__title');
@@ -16,8 +16,8 @@ export const profileSubtitle = document.querySelector('.profile__subtitle');
 export const popupAddElement = document.querySelector('.popup_type_add');
 export const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
 export const popupAddForm = popupAddElement.querySelector('.popup__form');
-export const popupAddInpitName = popupAddElement.querySelector('.popup__input-text_type_name');
-export const popupAddInpitLink = popupAddElement.querySelector('.popup__input-text_type_link');
+export const popupAddInpitName = popupAddElement.querySelector('.popup__input_type_name');
+export const popupAddInpitLink = popupAddElement.querySelector('.popup__input_type_link');
 export const popupAddSubmitButton = popupAddElement.querySelector('.popup__submit');
 
 //popup_type_image
@@ -27,30 +27,6 @@ export const popupImagePictureElement = popupImageElement.querySelector('.popup_
 export const popupImageNameElement = popupImageElement.querySelector('.popup__image-name');
 
 export const initialCards = [
-  // {
-  //   name: 'Архыз',
-  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  // },
-  // {
-  //   name: 'Челябинская область',
-  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  // },
-  // {
-  //   name: 'Иваново',
-  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  // },
-  // {
-  //   name: 'Камчатка',
-  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  // },
-  // {
-  //   name: 'Холмогорский район',
-  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  // },
-  // {
-  //   name: 'Байкал',
-  //   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  // },
   {
     name: 'PAINKILLER',
     link: 'https://avatars.yandex.net/get-music-content/28589/7f67a401.a.3763620-1/m1000x1000'
@@ -76,20 +52,16 @@ export const initialCards = [
     name: 'Сказка о потерянном времени',
     link: 'https://avatars.yandex.net/get-music-content/5417945/59f3dea8.a.18893830-1/m1000x1000'
   },
-  {
-    name: 'Химия',
-    link: 'https://avatars.yandex.net/get-music-content/2399641/80dfee5b.a.9267902-1/m1000x1000'
-  },
 ];
 
 // Захват контейнера и селектора шаблона карточек
-export const cardsSectionElement = document.querySelector('.elements');
+export const cardsSectionElement = document.querySelector('.card-section');
 export const cardTemplateSelector = '.card-template';
 
 export const config = {
   formSelector: '.popup__form',
-  inputSelector: '.popup__input-text',
+  inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
   inactiveButtonClass: 'popup__submit_invalid',
-  inputErrorClass: 'popup__input-text_type_error'
+  inputErrorClass: 'popup__input_type_error'
 }

@@ -1,4 +1,5 @@
-.element__group {
+/* card */
+.card__group {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -8,7 +9,7 @@
 }
 
 @media (min-width: 920px) {
-  .element__group {
+  .card__group {
     padding: 25px 21px 26px;
   }
 }
