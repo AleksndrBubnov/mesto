@@ -1,4 +1,4 @@
-.popup__submit {
+.form__submit {
   width: 100%;
   padding: 15px 0;
   margin: 42px auto 0;
@@ -14,12 +14,12 @@
   border: none;
 }
 
-.popup__submit:hover {
+.form__submit:hover {
   opacity: .8;
 }
 
 @media (min-width: 920px) {
-  .popup__submit {
+  .form__submit {
     padding: 14px 0;
     margin: 48px auto 0;
 

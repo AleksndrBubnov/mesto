@@ -42,9 +42,9 @@
       <button class="button popup__close-button" aria-label="close-button" type="button"></button>
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="popup">
+        <form class="form" name="popup">
           <input 
-            class="popup__input popup__input_type_title" 
+            class="form__input form__input_type_title" 
             minlength="2" 
             maxlength="40" 
             placeholder="Имя" 
@@ -54,7 +54,7 @@
           >
           <span id="title-error" class="error" ></span>
           <input 
-            class="popup__input popup__input_type_subtitle" 
+            class="form__input form__input_type_subtitle" 
             minlength="2" 
             maxlength="200" 
             placeholder="О себе" 
@@ -63,7 +63,7 @@
             required
           >
           <span id="subtitle-error" class="error" ></span>
-          <button class="button popup__submit" type="submit">Сохранить</button>
+          <button class="button form__submit" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
@@ -74,9 +74,9 @@
       <button class="button popup__close-button" aria-label="close-button" type="button"></button>
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form" name="popup">
+        <form class="form" name="popup">
           <input 
-            class="popup__input popup__input_type_name"
+            class="form__input form__input_type_name"
             minlength="2" 
             maxlength="30" 
             placeholder="Название" 
@@ -86,14 +86,14 @@
           >
           <span id="name-error" class="error" ></span>
           <input 
-            class="popup__input popup__input_type_link" 
+            class="form__input form__input_type_link" 
             placeholder="Ссылка на картинку" 
             type="url"
             name="link" 
             required
           >
           <span id="link-error" class="error" ></span>
-          <button class="button popup__submit" type="submit">Создать</button>
+          <button class="button form__submit" type="submit">Создать</button>
         </form>
       </div>
     </div>

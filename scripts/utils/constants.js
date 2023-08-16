@@ -2,20 +2,20 @@ export const popups = document.querySelectorAll('.popup');
 
 export const popupEditElement = document.querySelector('.popup_type_edit');
 export const popupEditOpenButtonElement = document.querySelector('.profile__edit-button');
-export const popupEditForm = popupEditElement.querySelector('.popup__form');
-export const popupInpitTitle = popupEditElement.querySelector('.popup__input_type_title');
-export const popupInpitSubtitle = popupEditElement.querySelector('.popup__input_type_subtitle');
-export const popupEditSubmitButton = popupEditElement.querySelector('.popup__submit');
+export const popupEditForm = popupEditElement.querySelector('.form');
+export const popupInpitTitle = popupEditElement.querySelector('.form__input_type_title');
+export const popupInpitSubtitle = popupEditElement.querySelector('.form__input_type_subtitle');
+export const popupEditSubmitButton = popupEditElement.querySelector('.form__submit');
 
 export const profileTitle = document.querySelector('.profile__title');
 export const profileSubtitle = document.querySelector('.profile__subtitle');
 
 export const popupAddElement = document.querySelector('.popup_type_add');
 export const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
-export const popupAddForm = popupAddElement.querySelector('.popup__form');
-export const popupAddInpitName = popupAddElement.querySelector('.popup__input_type_name');
-export const popupAddInpitLink = popupAddElement.querySelector('.popup__input_type_link');
-export const popupAddSubmitButton = popupAddElement.querySelector('.popup__submit');
+export const popupAddForm = popupAddElement.querySelector('.form');
+export const popupAddInpitName = popupAddElement.querySelector('.form__input_type_name');
+export const popupAddInpitLink = popupAddElement.querySelector('.form__input_type_link');
+export const popupAddSubmitButton = popupAddElement.querySelector('.form__submit');
 
 export const popupImageElement = document.querySelector('.popup_type_image');
 export const popupImageCardElement = popupImageElement.querySelector('.popup__image-place');
@@ -54,9 +54,9 @@ export const cardsSectionElement = document.querySelector('.card-section');
 export const cardTemplateSelector = '.card-template';
 
 export const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_invalid',
-  inputErrorClass: 'popup__input_type_error'
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_invalid',
+  inputErrorClass: 'form__input_type_error'
 }
