@@ -28,6 +28,9 @@ import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 
+
+const popupWithImage = new PopupWithImage(popupImageElement);
+
 // Создаения объектов валидации
 const popupEditFormValidation = new FormValidator(config, popupEditForm);
 const popupAddFormValidation = new FormValidator(config, popupAddForm);

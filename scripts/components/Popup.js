@@ -1,6 +1,8 @@
 export default class Popup {
-  constructor(popupSelector) {
+  #popupSelector
 
+  constructor(popupSelector) {
+    this.#popupSelector = popupSelector;
   }
 
   open() {
@@ -12,7 +14,7 @@ export default class Popup {
   }
 
   setEventListeners() {
-    
+
   }
 
   #handleEscClose() {
