@@ -1,7 +1,5 @@
-//все попапы
 export const popups = document.querySelectorAll('.popup');
 
-//popup_type_edit
 export const popupEditElement = document.querySelector('.popup_type_edit');
 export const popupEditOpenButtonElement = document.querySelector('.profile__edit-button');
 export const popupEditForm = popupEditElement.querySelector('.popup__form');
@@ -12,7 +10,6 @@ export const popupEditSubmitButton = popupEditElement.querySelector('.popup__sub
 export const profileTitle = document.querySelector('.profile__title');
 export const profileSubtitle = document.querySelector('.profile__subtitle');
 
-//popup_type_add
 export const popupAddElement = document.querySelector('.popup_type_add');
 export const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
 export const popupAddForm = popupAddElement.querySelector('.popup__form');
@@ -20,7 +17,6 @@ export const popupAddInpitName = popupAddElement.querySelector('.popup__input_ty
 export const popupAddInpitLink = popupAddElement.querySelector('.popup__input_type_link');
 export const popupAddSubmitButton = popupAddElement.querySelector('.popup__submit');
 
-//popup_type_image
 export const popupImageElement = document.querySelector('.popup_type_image');
 export const popupImageCardElement = popupImageElement.querySelector('.popup__image-place');
 export const popupImagePictureElement = popupImageElement.querySelector('.popup__image');
@@ -54,7 +50,6 @@ export const initialCards = [
   },
 ];
 
-// Захват контейнера и селектора шаблона карточек
 export const cardsSectionElement = document.querySelector('.card-section');
 export const cardTemplateSelector = '.card-template';
 
