@@ -1,5 +1,21 @@
 export default class Popup {
-  constructor() {
+  constructor(popupSelector) {
+
+  }
+
+  open() {
+
+  }
+
+  close() {
+
+  }
+
+  setEventListeners() {
+    
+  }
+
+  #handleEscClose() {
     
   }
 }

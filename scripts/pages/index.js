@@ -20,8 +20,13 @@ import {
   cardTemplateSelector,
   config
 } from "../utils/constants.js";
-import Card from "../components/Card.js";
+// import {...} from "../utils/utils.js";
+import Popup from "../components/Popup.js"
+import PopupWithForm from "../components/PopupWithForm.js"
+import PopupWithImage from "../components/PopupWithImage.js"
 import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import Card from "../components/Card.js";
 
 // Создаения объектов валидации
 const popupEditFormValidation = new FormValidator(config, popupEditForm);
