@@ -19,9 +19,9 @@ import {
   cardsSectionElement,
   cardTemplateSelector,
   config
-} from "./constants.js";
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+} from "../utils/constants.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 // Создаения объектов валидации
 const popupEditFormValidation = new FormValidator(config, popupEditForm);

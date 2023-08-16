@@ -1,6 +1,6 @@
-import { handleClickImage } from "./index.js";
+import { handleClickImage } from "../pages/index.js";
 
-export class Card {
+export default class Card {
   #name;
   #link;
   #template;
