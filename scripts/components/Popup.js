@@ -1,8 +1,6 @@
 export default class Popup {
-  #popupSelector
-
   constructor(popupSelector) {
-    this.#popupSelector = popupSelector;
+    this._popupSelector = popupSelector;
   }
 
   open() {

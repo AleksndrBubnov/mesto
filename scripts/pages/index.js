@@ -30,6 +30,7 @@ import Card from "../components/Card.js";
 
 
 const popupWithImage = new PopupWithImage(popupImageElement);
+popupWithImage.open();
 
 // Создаения объектов валидации
 const popupEditFormValidation = new FormValidator(config, popupEditForm);
@@ -87,63 +88,46 @@ popupEditOpenButtonElement.addEventListener('click', function () {
   fillEditPopupInputs();
   popupEditFormValidation.resetValidation();
   popupEditFormValidation.enabledButton();
-  // enabledButton(popupEditSubmitButton, config);
 });
 
 popupAddOpenButtonElement.addEventListener('click', function () {
   openPopup(popupAddElement);
   popupAddFormValidation.resetValidation();
   popupAddFormValidation.disabledButton();
-  // disabledButton(popupAddSubmitButton, config);
 });
-
-// открытие попапа картинки
-export function handleClickImage(name, link) {
-  openPopup(popupImageElement);
-  popupImageNameElement.textContent = name;
-  popupImagePictureElement.alt = name;
-  popupImagePictureElement.src = link;
-}
-
-// export function handleCardClick(name, link) {
-//   // устанавливаем ссылку
-//   popupImagePictureElement.src = link;
-
-//   // устанавливаем подпись картинке
-//   popupImagePictureElement.alt = name;
-
-//   // открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
-//   openPopup(popupImageElement);
-// }
 
 //закрытие попапов
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', closeByOverlayOrButton);
 });
 
-// функция добавления карточки в контейнер по ключу
+export function handleClickImage(name, link) {
+  openPopup(popupImageElement);
+  popupImageNameElement.textContent = name;
+  popupImagePictureElement.alt = name;
+  popupImagePictureElement.src = link;
+}
+// export function handleCardClick(name, link) {
+//   // устанавливаем ссылку
+//   popupImagePictureElement.src = link;
+//   // устанавливаем подпись картинке
+//   popupImagePictureElement.alt = name;
+//   // открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
+//   openPopup(popupImageElement);
+// }
+
+
 function addCard(cardElement, key) {
   cardsSectionElement[key](cardElement);
 } 
-
-// function addCard(cardElement, key) {
-//   if (key === 'append') {
-//     cardsSectionElement.append(cardElement);
-//   }
-//   if (key === 'prepend') {
-//     cardsSectionElement.prepend(cardElement);
-//   }
-// }
 
 function createCard (data, cardTemplateSelector) {
   const card = new Card(data, cardTemplateSelector).generateCard();
   return card;
 }
 
-//функц. выражение добавления карточки
-const renderFormCard = function (event) {
+const renderCardFromForm = function (event) {
   event.preventDefault();
-  // addCard(createCard(popupAddInpitName.value, popupAddInpitLink.value), 'prepend');
 
   const addFormData = {
     name: popupAddInpitName.value, 
@@ -156,12 +140,8 @@ const renderFormCard = function (event) {
   event.target.reset();
 }
 
-popupAddForm.addEventListener('submit', renderFormCard);
+popupAddForm.addEventListener('submit', renderCardFromForm);
 
 initialCards.forEach(function(item){
-  // const card = new Card(item, cardTemplateSelector);
-  // const cardElement = card.generateCard();
-  // cardsSectionElement.append(cardElement);
-  
   addCard(createCard(item, cardTemplateSelector), 'append');
 });
