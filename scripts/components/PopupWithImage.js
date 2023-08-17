@@ -6,6 +6,5 @@ export default class PopupWithImage extends Popup {
   }
 
   open(){
-    console.log(this._popupSelector);
   }
 }

@@ -20,7 +20,7 @@ import {
   cardTemplateSelector,
   config
 } from "../utils/constants.js";
-// import {...} from "../utils/utils.js";
+import {} from "../utils/utils.js";
 import Popup from "../components/Popup.js"
 import PopupWithForm from "../components/PopupWithForm.js"
 import PopupWithImage from "../components/PopupWithImage.js"
