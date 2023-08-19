@@ -21,16 +21,43 @@ import {
   config
 } from "../utils/constants.js";
 import {} from "../utils/utils.js";
-import Popup from "../components/Popup.js"
 import PopupWithForm from "../components/PopupWithForm.js"
 import PopupWithImage from "../components/PopupWithImage.js"
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 
-
 const popupWithImage = new PopupWithImage(popupImageElement);
 popupWithImage.open();
+
+function addCard(cardElement, key) {
+  cardsSectionElement[key](cardElement);
+} 
+
+function createCard (data, cardTemplateSelector) {
+  const card = new Card(data, cardTemplateSelector).generateCard();
+  return card;
+}
+
+const renderCardFromForm = function (event) {
+  event.preventDefault();
+
+  const addFormData = {
+    name: popupAddInpitName.value, 
+    link: popupAddInpitLink.value
+  }
+
+  addCard(createCard(addFormData, cardTemplateSelector), 'prepend');
+
+  closePopup(popupAddElement);
+  event.target.reset();
+}
+
+popupAddForm.addEventListener('submit', renderCardFromForm);
+
+initialCards.forEach(function(item){
+  addCard(createCard(item, cardTemplateSelector), 'append');
+});
 
 // Создаения объектов валидации
 const popupEditFormValidation = new FormValidator(config, popupEditForm);
@@ -115,33 +142,3 @@ export function handleClickImage(name, link) {
 //   // открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
 //   openPopup(popupImageElement);
 // }
-
-
-function addCard(cardElement, key) {
-  cardsSectionElement[key](cardElement);
-} 
-
-function createCard (data, cardTemplateSelector) {
-  const card = new Card(data, cardTemplateSelector).generateCard();
-  return card;
-}
-
-const renderCardFromForm = function (event) {
-  event.preventDefault();
-
-  const addFormData = {
-    name: popupAddInpitName.value, 
-    link: popupAddInpitLink.value
-  }
-
-  addCard(createCard(addFormData, cardTemplateSelector), 'prepend');
-
-  closePopup(popupAddElement);
-  event.target.reset();
-}
-
-popupAddForm.addEventListener('submit', renderCardFromForm);
-
-initialCards.forEach(function(item){
-  addCard(createCard(item, cardTemplateSelector), 'append');
-});
