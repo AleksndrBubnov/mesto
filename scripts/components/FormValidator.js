@@ -1,11 +1,8 @@
 export default class FormValidator {
-  #config
-  #formElement
-  #inputList
-  #submitButton
-  #form 
-  #cardImage 
-  #likeButton
+  #config;
+  #formElement;
+  #inputList;
+  #submitButton;
 
   constructor(config, formElement) {
     this.#config = config;
@@ -36,9 +33,6 @@ export default class FormValidator {
   #setEventListener() {
     this.#inputList = this.#formElement.querySelectorAll(this.#config.inputSelector);
     this.#submitButton = this.#formElement.querySelector(this.#config.submitButtonSelector);
-    // this.#form =  this.#formElement.querySelector(this.#config.formSelector);
-    // this.#cardImage =  this.#formElement.querySelector(this.#config.);
-    // this.#likeButton =  this.#formElement.querySelector(this.#config.);
   
     this.#toggleButtonState(this.#formElement.checkValidity());
   

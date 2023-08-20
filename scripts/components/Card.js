@@ -1,5 +1,3 @@
-import { handleClickImage } from "../pages/index.js";
-
 export default class Card {
   #name;
   #link;
@@ -9,11 +7,13 @@ export default class Card {
   #cardImage;
   #cardLikeButton;
   #cardDeleteButton;
+  #handleClickImage;
 
-  constructor(data, templateSelector) {
-    this.#name = data.name;
-    this.#link = data.link;
+  constructor({ name, link }, templateSelector, handleClickImage) {
+    this.#name = name;
+    this.#link = link;
     this.#template = templateSelector;
+    this.#handleClickImage = handleClickImage;
   }
 
   generateCard() {
@@ -35,8 +35,7 @@ export default class Card {
   #getTemplate() {
     const cardTemplate = document
     .querySelector(this.#template)
-    .content
-    .querySelector('.card')
+    .content.querySelector('.card')
     .cloneNode(true);
 
     return cardTemplate;
@@ -44,23 +43,23 @@ export default class Card {
 
   #setEventListeners() {
     this.#cardImage.addEventListener('click', () => {
-      handleClickImage(this.#name, this.#link);
+      this.#handleClickImage(this.#name, this.#link);
     });
   
     this.#cardLikeButton.addEventListener('click', () => {
-      this.#cardLikeButton.classList.toggle('card__like-button_active');
+      this.#toggleLike();
     });
   
     this.#cardDeleteButton.addEventListener('click', () => {
-      deleteCard(this.#cardElement);
+      this.#deleteCard();
     });
   }
-}
 
-export function likeCard(event) {
-  event.currentTarget.classList.toggle('card__like-button_active');
-};
+  #toggleLike() {
+    this.#cardLikeButton.classList.toggle('card__like-button_active');
+  };
 
-export function deleteCard(card) {
-  card.remove();
+  #deleteCard() {
+    this.#cardElement.remove();
+  }
 }

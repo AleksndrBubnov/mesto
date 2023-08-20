@@ -1,6 +1,6 @@
 export default class UserInfo {
-  #title
-  #subtitle
+  #title;
+  #subtitle;
 
   constructor(title, subtitle) {
     this.#title = title;

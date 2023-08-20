@@ -1,3 +1,8 @@
+import Section from "../components/Section.js";
+import Card from "../components/Card.js";
+import PopupWithForm from "../components/PopupWithForm.js"
+import PopupWithImage from "../components/PopupWithImage.js"
+import FormValidator from "../components/FormValidator.js";
 import { 
   popups,
   popupEditElement,
@@ -20,24 +25,25 @@ import {
   cardTemplateSelector,
   config
 } from "../utils/constants.js";
-import {} from "../utils/utils.js";
-import PopupWithForm from "../components/PopupWithForm.js"
-import PopupWithImage from "../components/PopupWithImage.js"
-import FormValidator from "../components/FormValidator.js";
-import Section from "../components/Section.js";
-import Card from "../components/Card.js";
+// import { handleClickImage } from "../utils/utils.js";
 
-const popupWithImage = new PopupWithImage(popupImageElement);
-popupWithImage.open();
+const sectionData = { 
+  items: initialCards, 
+  renderer: (item) => {
+    cardsSectionElement['append'](createCard(item, cardTemplateSelector, handleClickImage));
+  } 
+}
 
-function addCard(cardElement, key) {
-  cardsSectionElement[key](cardElement);
-} 
+const cardSection = new Section( sectionData, '.card-section').renderItems();
 
-function createCard (data, cardTemplateSelector) {
-  const card = new Card(data, cardTemplateSelector).generateCard();
+function createCard (data, cardTemplateSelector, handleClickImage) {
+  const card = new Card(data, cardTemplateSelector, handleClickImage).generateCard();
   return card;
 }
+
+function addCard(card, key) {
+  cardsSectionElement[key](card);
+} 
 
 const renderCardFromForm = function (event) {
   event.preventDefault();
@@ -47,7 +53,7 @@ const renderCardFromForm = function (event) {
     link: popupAddInpitLink.value
   }
 
-  addCard(createCard(addFormData, cardTemplateSelector), 'prepend');
+  cardSection.addItem(createCard(addFormData, cardTemplateSelector, handleClickImage), 'prepend');
 
   closePopup(popupAddElement);
   event.target.reset();
@@ -55,16 +61,21 @@ const renderCardFromForm = function (event) {
 
 popupAddForm.addEventListener('submit', renderCardFromForm);
 
-initialCards.forEach(function(item){
-  addCard(createCard(item, cardTemplateSelector), 'append');
-});
+// initialCards.forEach(function(item){
+//   addCard(createCard(item, cardTemplateSelector, handleClickImage), 'append');
+// });
 
-// Создаения объектов валидации
-const popupEditFormValidation = new FormValidator(config, popupEditForm);
-const popupAddFormValidation = new FormValidator(config, popupAddForm);
+function handleClickImage(name, link) {
+  popupImageNameElement.textContent = name;
+  popupImagePictureElement.alt = name;
+  popupImagePictureElement.src = link;
+  
+  openPopup(popupImageElement);
+}
 
-popupEditFormValidation.enableValidation();
-popupAddFormValidation.enableValidation();
+// const editPopup = new PopupWithForm();
+// const addPopup = new PopupWithForm();
+// const cardPopup = new PopupWithImage(popupImageElement);
 
 // функция заполнения полей попапа редактирования профиля
 function fillEditPopupInputs() {
@@ -128,17 +139,8 @@ popups.forEach((popup) => {
   popup.addEventListener('mousedown', closeByOverlayOrButton);
 });
 
-export function handleClickImage(name, link) {
-  openPopup(popupImageElement);
-  popupImageNameElement.textContent = name;
-  popupImagePictureElement.alt = name;
-  popupImagePictureElement.src = link;
-}
-// export function handleCardClick(name, link) {
-//   // устанавливаем ссылку
-//   popupImagePictureElement.src = link;
-//   // устанавливаем подпись картинке
-//   popupImagePictureElement.alt = name;
-//   // открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
-//   openPopup(popupImageElement);
-// }
+const popupEditFormValidation = new FormValidator(config, popupEditForm);
+const popupAddFormValidation = new FormValidator(config, popupAddForm);
+
+popupEditFormValidation.enableValidation();
+popupAddFormValidation.enableValidation();
