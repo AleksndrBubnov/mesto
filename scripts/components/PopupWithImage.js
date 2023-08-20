@@ -5,6 +5,7 @@ export default class PopupWithImage extends Popup {
     super(popupSelector);
   }
 
-  open(){
+  open(data) {
+    super.open();
   }
 }
