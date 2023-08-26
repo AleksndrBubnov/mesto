@@ -31,7 +31,7 @@
 .popup_type_image{background-color:rgba(0,0,0,.9)}
 .popup__group{display:flex;flex-direction:column;justify-content:center;position:relative}
 .popup__close-button{background-color:transparent;background-image:url(b793e07c3f4c19e26c11.svg);border:none;cursor:pointer;height:20px;margin:0;padding:0;position:absolute;right:0;top:-36px;width:20px}.popup__close-button:hover{opacity:.6}@media (min-width:920px){.popup__close-button{background-image:url(2ceb783afbab75916ddc.svg);height:32px;right:-40px;top:-40px;width:32px}}
-.popup__container{align-items:center;background-color:#fff;border-radius:10px;display:flex;flex-direction:column;height:322px;justify-content:start;margin:0;padding:0;width:282px;z-index:2}@media (min-width:920px){.popup__container{height:330px;width:430px}}
+.popup__container{align-items:center;background-color:#fff;border-radius:10px;display:flex-start;flex-direction:column;height:322px;justify-content:start;margin:0;padding:0;width:282px;z-index:2}@media (min-width:920px){.popup__container{height:330px;width:430px}}
 .popup__title{font-size:18px;font-style:normal;font-weight:900;line-height:22px;margin:0;padding:25px 22px 45px;width:238px}@media (min-width:920px){.popup__title{align-self:start;font-size:24px;line-height:29px;padding:34px 36px 22px;width:330px}}
 .popup__image{max-height:75vh;max-width:75vw;-o-object-fit:cover;object-fit:cover;-o-object-position:0 0;object-position:0 0}
 .popup__image-name{color:#fff;font-size:12px;font-weight:400;line-height:14.52px;margin:0}
