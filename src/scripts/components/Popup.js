@@ -3,10 +3,9 @@ export default class Popup {
     this._popup = document.querySelector(popupSelector);
   }
 
-  #handleEscClose(event) {
+  #handleEscClose = (event) => {
     if (event.key === 'Escape') {
       this.close();
-      console.log(this._popup);
     }
   }
 
@@ -22,10 +21,7 @@ export default class Popup {
 
   setEventListener() {
     this._popup.addEventListener("mousedown", (event) => {
-      if (
-        event.target === event.currentTarget ||
-        event.target.classList.contains("popup__close-button")
-      ) {
+      if (event.target === event.currentTarget || event.target.classList.contains("popup__close-button")) {
         this.close();
       }
     });

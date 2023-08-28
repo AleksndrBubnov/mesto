@@ -6,15 +6,13 @@ export const popupEditForm = popupEditElement.querySelector('.form');
 export const popupInpitTitle = popupEditElement.querySelector('.form__input_type_title');
 export const popupInpitSubtitle = popupEditElement.querySelector('.form__input_type_subtitle');
 export const popupEditSubmitButton = popupEditElement.querySelector('.form__submit');
+export const profileTitleSelector = '.profile__title';
+export const profileSubtitleSelector = '.profile__subtitle';
 
-export const profileTitle = document.querySelector('.profile__title');
-export const profileSubtitle = document.querySelector('.profile__subtitle');
 
 export const popupAddElement = document.querySelector('.popup_type_add');
 export const popupAddOpenButtonElement = document.querySelector('.profile__add-button');
 export const popupAddForm = popupAddElement.querySelector('.form');
-export const popupAddInpitName = popupAddElement.querySelector('.form__input_type_name');
-export const popupAddInpitLink = popupAddElement.querySelector('.form__input_type_link');
 export const popupAddSubmitButton = popupAddElement.querySelector('.form__submit');
 
 export const popupImageElement = document.querySelector('.popup_type_image');

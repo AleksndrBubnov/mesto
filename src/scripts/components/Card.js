@@ -16,7 +16,7 @@ export default class Card {
     this.#handleClickImage = handleClickImage;
   }
 
-  generateCard() {
+  generate() {
     this.#cardElement = this.#getTemplate();
       this.#cardTitle = this.#cardElement.querySelector('.card__title');
       this.#cardImage = this.#cardElement.querySelector('.card__image');
