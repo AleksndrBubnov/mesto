@@ -1,7 +1,7 @@
 .form__submit {
   width: 100%;
   padding: 15px 0;
-  margin: 42px auto 0;
+  margin: 42px auto 24px;
 
   font-style: normal;
   font-weight: 400;
@@ -21,7 +21,7 @@
 @media (min-width: 920px) {
   .form__submit {
     padding: 14px 0;
-    margin: 48px auto 0;
+    margin: 48px auto 36px;
 
     font-size: 18px;
     line-height: 22px;

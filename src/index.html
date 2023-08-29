@@ -13,10 +13,12 @@
   <header class="header">
     <img class="logo" src="<%=require('./images/logo_mesto_russia.svg')%>" alt="место лого">
   </header>
-  
+
   <main class="content">
     <section class="profile">
+      <button class="profile__avatar-button button" aria-label="avatar-button" type="button"></button>
       <img class="profile__avatar" src="<%=require('./images/My-profile-image.jpg')%>" alt="фото Жак-Ив Кусто">
+      <!-- <img class="profile__avatar" src="<%=require('./images/My-profile-image.jpg')%>" alt="фото Жак-Ив Кусто"> -->
       <div class="profile__group">
         <div class="profile__container">
           <h1 class="profile__title"></h1>
@@ -36,32 +38,33 @@
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
 
+  <section class="popup popup_type_avatar">
+    <div class="popup__group">
+      <button class="button popup__close-button" aria-label="close-button" type="button"></button>
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="form" name="popup">
+          <input class="form__input form__input_type_link" placeholder="Ссылка на картинку" type="url" name="link"
+            required>
+          <span id="link-error" class="error"></span>
+          <button class="button form__submit" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section class="popup popup_type_edit">
     <div class="popup__group">
       <button class="button popup__close-button" aria-label="close-button" type="button"></button>
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form" name="popup">
-          <input 
-            class="form__input form__input_type_title" 
-            minlength="2" 
-            maxlength="40" 
-            placeholder="Имя" 
-            type="text" 
-            name="title"
-            required
-          >
-          <span id="title-error" class="error" ></span>
-          <input 
-            class="form__input form__input_type_subtitle" 
-            minlength="2" 
-            maxlength="200" 
-            placeholder="О себе" 
-            type="text"
-            name="subtitle"
-            required
-          >
-          <span id="subtitle-error" class="error" ></span>
+          <input class="form__input form__input_type_title" minlength="2" maxlength="40" placeholder="Имя" type="text"
+            name="title" required>
+          <span id="title-error" class="error"></span>
+          <input class="form__input form__input_type_subtitle" minlength="2" maxlength="200" placeholder="О себе"
+            type="text" name="subtitle" required>
+          <span id="subtitle-error" class="error"></span>
           <button class="button form__submit" type="submit">Сохранить</button>
         </form>
       </div>
@@ -74,25 +77,25 @@
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
         <form class="form" name="popup">
-          <input 
-            class="form__input form__input_type_name"
-            minlength="2" 
-            maxlength="30" 
-            placeholder="Название" 
-            type="text" 
-            name="name" 
-            required
-          >
-          <span id="name-error" class="error" ></span>
-          <input 
-            class="form__input form__input_type_link" 
-            placeholder="Ссылка на картинку" 
-            type="url"
-            name="link" 
-            required
-          >
-          <span id="link-error" class="error" ></span>
+          <input class="form__input form__input_type_name" minlength="2" maxlength="30" placeholder="Название"
+            type="text" name="name" required>
+          <span id="name-error" class="error"></span>
+          <input class="form__input form__input_type_link" placeholder="Ссылка на картинку" type="url" name="link"
+            required>
+          <span id="link-error" class="error"></span>
           <button class="button form__submit" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="popup popup_type_delete">
+    <div class="popup__group">
+      <button class="button popup__close-button" aria-label="close-button" type="button"></button>
+      <div class="popup__container">
+        <h2 class="popup__title">Вы уверены?</h2>
+        <form class="form" name="popup">
+          <button class="button form__submit form__submit_delete" type="submit">ок</button>
         </form>
       </div>
     </div>
@@ -102,7 +105,9 @@
     <div class="popup__group">
       <button class="button popup__close-button" aria-label="close-button" type="button"></button>
       <div>
-        <img class="popup__image" src="https://avatars.yandex.net/get-music-user-playlist/27701/103372440.2710.58087/m1000x1000?1691682958087" alt="">
+        <img class="popup__image"
+          src="https://avatars.yandex.net/get-music-user-playlist/27701/103372440.2710.58087/m1000x1000?1691682958087"
+          alt="">
         <p class="popup__image-name"></p>
       </div>
     </div>
@@ -110,14 +115,31 @@
 
   <template id="card-template" class="card-template">
     <article class="card">
-      <img class="button card__image" src="https://avatars.yandex.net/get-music-user-playlist/27701/103372440.2710.58087/m1000x1000?1691682958087" alt="">
+      <img class="button card__image"
+        src="https://avatars.yandex.net/get-music-user-playlist/27701/103372440.2710.58087/m1000x1000?1691682958087"
+        alt="">
       <button class="button card__delete-button" aria-label="delete-button" type="button"></button>
+      <div class="card__group">
+        <h2 class="card__title"></h2>
+        <div class="card__like-group">
+          <button class="button card__like-button" aria-label="like-button" type="button"></button>
+          <p class="card__like-count">5</p>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <!-- <template id="card-template-no-delete" class="card-template-no-delete">
+    <article class="card">
+      <img class="button card__image"
+        src="https://avatars.yandex.net/get-music-user-playlist/27701/103372440.2710.58087/m1000x1000?1691682958087"
+        alt="">
       <div class="card__group">
         <h2 class="card__title"></h2>
         <button class="button card__like-button" aria-label="like-button" type="button"></button>
       </div>
     </article>
-  </template>
+  </template> -->
 </body>
 
 </html>

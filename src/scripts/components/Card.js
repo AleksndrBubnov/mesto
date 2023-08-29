@@ -23,9 +23,9 @@ export default class Card {
       this.#cardLikeButton = this.#cardElement.querySelector('.card__like-button');
       this.#cardDeleteButton = this.#cardElement.querySelector('.card__delete-button');
     
-    this.#cardTitle .textContent = this.#name;
-    this.#cardImage.src = this.#link;
-    this.#cardImage.alt = this.#name;
+      this.#cardImage.src = this.#link;
+      this.#cardImage.alt = this.#name;
+      this.#cardTitle.textContent = this.#name;
 
     this.#setEventListeners();
 

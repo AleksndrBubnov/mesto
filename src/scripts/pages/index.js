@@ -6,41 +6,42 @@ import PopupWithImage from "../components/PopupWithImage.js"
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 import {
-  popupEditSelector,
+  popupAvatarOpenButtonElement,
+  popupAvatarSelector,
+  popupAvatarForm,
   popupEditOpenButtonElement,
+  popupEditSelector,
   popupEditForm,
-  popupInpitTitle,
-  popupInpitSubtitle,
   profileTitleSelector,
   profileSubtitleSelector,
-  popupAddSelector,
   popupAddOpenButtonElement,
+  popupAddSelector,
   popupAddForm,
   popupImageSelector,
-  popupImagePictureElement,
-  popupImageNameElement,
+  popupDeleteSelector,
+
   cardTemplateSelector,
   config,
   initialCards
 } from "../utils/constants.js";
 import { } from "../utils/utils.js";
 
-const profileInfo = new UserInfo({
-  titleSelector: profileTitleSelector,
-  subtitleSelector: profileSubtitleSelector
-});
+const profileInfo = new UserInfo({ titleSelector: profileTitleSelector, subtitleSelector: profileSubtitleSelector });
+profileInfo.setUserInfo({ titleText: 'Саша Бубнов', subtitleText: 'Веб-разработчик' });
 
-profileInfo.setUserInfo({
-  titleText: 'Саша Бубнов',
-  subtitleText: 'Веб-разработчик'
+const avatarPopup = new PopupWithForm({
+  popupSelector: popupAvatarSelector,
+  handleSubmit: (formData) => {
+    avatarPopup.close();
+  }
 });
 
 const editPopup = new PopupWithForm({
   popupSelector: popupEditSelector,
   handleSubmit: (formData) => {
     profileInfo.setUserInfo({
-      titleText: popupInpitTitle.value,
-      subtitleText: popupInpitSubtitle.value
+      titleText: formData.title,
+      subtitleText: formData.subtitle
     });
     editPopup.close();
   }
@@ -52,6 +53,13 @@ const addPopup = new PopupWithForm({
     const cardElement = createCard(formData);
     cardSection.addItem(cardElement, 'prepend');
     addPopup.close();
+  }
+});
+
+const deletePopup = new PopupWithForm({
+  popupSelector: popupDeleteSelector,
+  handleSubmit: (formData) => {
+    deletePopup.close();
   }
 });
 
@@ -76,15 +84,25 @@ function createCard(data) {
   return cardElement
 }
 
+const popupAvatarFormValidation = new FormValidator(config, popupAvatarForm);
 const popupEditFormValidation = new FormValidator(config, popupEditForm);
 const popupAddFormValidation = new FormValidator(config, popupAddForm);
 
+popupAvatarFormValidation.enableValidation();
 popupEditFormValidation.enableValidation();
 popupAddFormValidation.enableValidation();
 
+avatarPopup.setEventListener();
 editPopup.setEventListener();
 addPopup.setEventListener();
 cardImagePopup.setEventListener();
+deletePopup.setEventListener();
+
+popupAvatarOpenButtonElement.addEventListener('click', function () {
+  popupAddFormValidation.resetValidation();
+  popupAddFormValidation.disabledButton();
+  avatarPopup.open();
+});
 
 popupEditOpenButtonElement.addEventListener('click', function () {
   editPopup.setInputValues(profileInfo.getUserInfo());
@@ -100,8 +118,5 @@ popupAddOpenButtonElement.addEventListener('click', function () {
 });
 
 function handleClickImage(name, link) {
-  popupImageNameElement.textContent = name;
-  popupImagePictureElement.alt = name;
-  popupImagePictureElement.src = link;
-  cardImagePopup.open();
+  cardImagePopup.open({ name, link });
 }
