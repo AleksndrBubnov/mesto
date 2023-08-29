@@ -22,7 +22,7 @@ import {
   cardTemplateSelector,
   config,
   initialCards
-} from "../scripts/components/constants.js";
+} from "../scripts/constants.js";
 
 function createCard(data) {
   const card = new Card(data, cardTemplateSelector, handleClickImage);
