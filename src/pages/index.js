@@ -1,10 +1,10 @@
-import '../../pages/index.css';
-import Section from "../components/Section.js";
-import Card from "../components/Card.js";
-import PopupWithForm from "../components/PopupWithForm.js"
-import PopupWithImage from "../components/PopupWithImage.js"
-import FormValidator from "../components/FormValidator.js";
-import UserInfo from "../components/UserInfo.js";
+import './index.css';
+import Section from "../scripts/components/Section.js";
+import Card from "../scripts/components/Card.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js"
+import PopupWithImage from "../scripts/components/PopupWithImage.js"
+import FormValidator from "../scripts/components/FormValidator.js";
+import UserInfo from "../scripts/components/UserInfo.js";
 import {
   popupAvatarOpenButtonElement,
   popupAvatarSelector,
@@ -19,12 +19,20 @@ import {
   popupAddForm,
   popupImageSelector,
   popupDeleteSelector,
-
   cardTemplateSelector,
   config,
   initialCards
-} from "../utils/constants.js";
-import { } from "../utils/utils.js";
+} from "../scripts/components/constants.js";
+
+function createCard(data) {
+  const card = new Card(data, cardTemplateSelector, handleClickImage);
+  const cardElement = card.generate();
+  return cardElement
+}
+
+function handleClickImage(name, link) {
+  cardImagePopup.open({ name, link });
+}
 
 const profileInfo = new UserInfo({ titleSelector: profileTitleSelector, subtitleSelector: profileSubtitleSelector });
 profileInfo.setUserInfo({ titleText: 'Саша Бубнов', subtitleText: 'Веб-разработчик' });
@@ -78,12 +86,6 @@ const sectionData = {
 const cardSection = new Section(sectionData, '.card-section');
 cardSection.renderItems();
 
-function createCard(data) {
-  const card = new Card(data, cardTemplateSelector, handleClickImage);
-  const cardElement = card.generate();
-  return cardElement
-}
-
 const popupAvatarFormValidation = new FormValidator(config, popupAvatarForm);
 const popupEditFormValidation = new FormValidator(config, popupEditForm);
 const popupAddFormValidation = new FormValidator(config, popupAddForm);
@@ -116,7 +118,3 @@ popupAddOpenButtonElement.addEventListener('click', function () {
   popupAddFormValidation.disabledButton();
   addPopup.open();
 });
-
-function handleClickImage(name, link) {
-  cardImagePopup.open({ name, link });
-}
