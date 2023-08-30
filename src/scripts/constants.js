@@ -8,6 +8,7 @@ export const popupEditSelector = '.popup_type_edit';
 export const popupEditElement = document.querySelector('.popup_type_edit');
 export const popupEditForm = popupEditElement.querySelector('.form');
 export const popupEditSubmitButton = popupEditElement.querySelector('.form__submit');
+export const profileAvatarSelector = '.profile__avatar';
 export const profileTitleSelector = '.profile__title';
 export const profileSubtitleSelector = '.profile__subtitle';
 
