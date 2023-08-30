@@ -27,17 +27,32 @@ import {
   initialCards
 } from "../scripts/constants.js";
 
-function createCard(data) {
-  const card = new Card(data, cardTemplateSelector, handleClickImage);
-  const cardElement = card.generate();
-  return cardElement
-}
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-42',
+  headers: {
+    authorization: 'c56e30dc-2883-4270-a59e-b2f7bae969c6',
+    'Content-Type': 'application/json'
+  }
+}); 
 
-function handleClickImage(name, link) {
-  cardImagePopup.open({ name, link });
-}
+api.getInitialCards()
+  .then((result) => {
+    // обрабатываем результат
+  })
+  .catch((err) => {
+    console.log(err); // выведем ошибку в консоль
+  }); 
 
-const api = new Api();
+// fetch('https://mesto.nomoreparties.co/v1/cohort-73/cards', {
+//   headers: {
+//     authorization: '9e0e3d64-a8f8-4b95-971b-fdcf299c851f'
+//   }
+// })
+//   .then(res => res.json())
+//   .then((result) => {
+//     console.log(result);
+//   });
+
 
 const profileInfo = new UserInfo({
   titleSelector: profileTitleSelector,
@@ -55,6 +70,7 @@ const avatarPopup = new PopupWithForm({
   popupSelector: popupAvatarSelector,
   handleSubmit: (formData) => {
     const profile = profileInfo.getUserInfo();
+
     profileInfo.setUserInfo({
       titleText: profile.title,
       subtitleText: profile.subtitle,
@@ -141,3 +157,13 @@ popupAddOpenButtonElement.addEventListener('click', function () {
   popupAddFormValidation.disabledButton();
   addPopup.open();
 });
+
+function createCard(data) {
+  const card = new Card(data, cardTemplateSelector, handleClickImage);
+  const cardElement = card.generate();
+  return cardElement
+}
+
+function handleClickImage(name, link) {
+  cardImagePopup.open({ name, link });
+}
