@@ -1,29 +1,61 @@
 export default class Api {
-  #baseUrl
-  #headers
-  constructor({ baseUrl, headers }) {
-    this.#baseUrl = baseUrl;
-    this.#headers = headers;
-    console.log(this.#baseUrl);
-    console.log(this.#headers);
+  #url;
+  #headers;
+  constructor(apiConfig) {
+    this.#url = apiConfig.url;
+    this.#headers = apiConfig.headers;
+  }
+
+  #onResponce(res) {
+    return res.ok
+      ? res.json()
+      : res.json().then(errorData => Promise.reject(errorData))
   }
 
   getInitialCards() {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-42/cards', {
-      headers: {
-        authorization: 'c56e30dc-2883-4270-a59e-b2f7bae969c6'
-      }
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-  
-        // если ошибка, отклоняем промис
-        return Promise.reject(`Ошибка: ${res.status}, (╮°-°)╮┳━━┳ ( ╯°□°)╯ ┻━━┻`);
-      });
-  } 
+    return fetch(`${this.#url}/cards`, { headers: this.#headers })
+      .then(this.#onResponce)
+  }
 
-  // другие методы работы с API
+  // getAllCards() {
+  //   return fetch(`${this._url}/cards`, { headers: this._headers })
+  //     .then(
+  //       this._handleReply
+  //     );
+  // }
+
+  getCardById(idCard) {
+    return fetch(`${this.#url}/cards/${idCard}`)
+      .then(this.#onResponce)
+
+  }
+
+  removeCard(idCard) {
+    return fetch(`${this.#url}/cards/${idCard}`, {
+      method: 'DELETE'
+    })
+      .then(this.#onResponce)
+
+  }
+
+  addCard(data) {
+    return fetch(`${this.#url}/cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify(data)
+    })
+      .then(this.#onResponce)
+
+  }
+
+  editCard(data, idCard) {
+    return fetch(`${this.#url}/cards/${idCard}`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify(data)
+    })
+      .then(this.#onResponce)
+
+  }
 }
 

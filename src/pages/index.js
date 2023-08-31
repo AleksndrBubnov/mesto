@@ -23,36 +23,13 @@ import {
   popupImageSelector,
   popupDeleteSelector,
   cardTemplateSelector,
+  apiConfig,
   config,
   initialCards
-} from "../scripts/constants.js";
+} from "../scripts/utils/constants.js";
 
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-42',
-  headers: {
-    authorization: 'c56e30dc-2883-4270-a59e-b2f7bae969c6',
-    'Content-Type': 'application/json'
-  }
-}); 
-
-api.getInitialCards()
-  .then((result) => {
-    // обрабатываем результат
-  })
-  .catch((err) => {
-    console.log(err); // выведем ошибку в консоль
-  }); 
-
-// fetch('https://mesto.nomoreparties.co/v1/cohort-73/cards', {
-//   headers: {
-//     authorization: '9e0e3d64-a8f8-4b95-971b-fdcf299c851f'
-//   }
-// })
-//   .then(res => res.json())
-//   .then((result) => {
-//     console.log(result);
-//   });
-
+const api = new Api(apiConfig);
+console.log(api);
 
 const profileInfo = new UserInfo({
   titleSelector: profileTitleSelector,
@@ -80,6 +57,7 @@ const avatarPopup = new PopupWithForm({
     avatarPopup.close();
   }
 });
+avatarPopup.setEventListener();
 
 const editPopup = new PopupWithForm({
   popupSelector: popupEditSelector,
@@ -92,6 +70,7 @@ const editPopup = new PopupWithForm({
     editPopup.close();
   }
 });
+editPopup.setEventListener();
 
 const addPopup = new PopupWithForm({
   popupSelector: popupAddSelector,
@@ -102,6 +81,7 @@ const addPopup = new PopupWithForm({
     addPopup.close();
   }
 });
+addPopup.setEventListener();
 
 // const deletePopup = new PopupWithConfirmation({
 //   // popupSelector: popupDeleteSelector,
@@ -109,8 +89,10 @@ const addPopup = new PopupWithForm({
 //   //   deletePopup.close();
 //   // }
 // });
+// deletePopup.setEventListener();
 
 const cardImagePopup = new PopupWithImage(popupImageSelector);
+cardImagePopup.setEventListener();
 
 const sectionData = {
   items: initialCards,
@@ -124,6 +106,10 @@ const sectionData = {
 
 const cardSection = new Section(sectionData, '.card-section');
 cardSection.renderItems();
+// api.getInitialCards()
+//   .then( initialCards => cardSection.renderItems())
+//   .catch(error => console.log(error));
+// api.getInitialCards().then(dataTasks => console.log(dataTasks))
 
 const popupAvatarFormValidation = new FormValidator(config, popupAvatarForm);
 const popupEditFormValidation = new FormValidator(config, popupEditForm);
@@ -132,12 +118,6 @@ const popupAddFormValidation = new FormValidator(config, popupAddForm);
 popupAvatarFormValidation.enableValidation();
 popupEditFormValidation.enableValidation();
 popupAddFormValidation.enableValidation();
-
-avatarPopup.setEventListener();
-editPopup.setEventListener();
-addPopup.setEventListener();
-cardImagePopup.setEventListener();
-// deletePopup.setEventListener();
 
 popupAvatarOpenButtonElement.addEventListener('click', function () {
   popupAddFormValidation.resetValidation();

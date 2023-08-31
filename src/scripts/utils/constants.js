@@ -8,6 +8,7 @@ export const popupEditSelector = '.popup_type_edit';
 export const popupEditElement = document.querySelector('.popup_type_edit');
 export const popupEditForm = popupEditElement.querySelector('.form');
 export const popupEditSubmitButton = popupEditElement.querySelector('.form__submit');
+
 export const profileAvatarSelector = '.profile__avatar';
 export const profileTitleSelector = '.profile__title';
 export const profileSubtitleSelector = '.profile__subtitle';
@@ -23,6 +24,14 @@ export const popupImageSelector = '.popup_type_image';
 export const popupDeleteSelector = '.popup_type_delete';
 
 export const cardTemplateSelector = '.card-template';
+
+export const apiConfig = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-73',
+  headers: {
+    authorization: '9e0e3d64-a8f8-4b95-971b-fdcf299c851f',
+    "content-type": "application/json",
+  }
+}
 
 export const config = {
   formSelector: '.form',
