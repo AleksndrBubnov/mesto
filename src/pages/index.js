@@ -24,12 +24,38 @@ import {
   popupDeleteSelector,
   cardTemplateSelector,
   apiConfig,
-  config,
-  initialCards
+  ValidationConfig,
 } from "../scripts/utils/constants.js";
 
 const api = new Api(apiConfig);
-console.log(api);
+
+let userId;
+console.log(api.getUserData());
+
+// Promise.all([api.getUserData(), api.getInitialCards()])
+//   .then(([userData, cardItems]) => {
+//     userInfo.setUserInfo(userData);
+//     userInfo.setUserAvatar(userData);
+//     userId = userData._id;
+
+//     cardSection.renderCards(cardItems)
+//   })
+//   .catch((err) => console.log(err));
+
+const cardSection = new Section({
+  renderer: (item) => {
+    cardSection.addItem(
+      createCard(item),
+      'append'
+    );
+  }
+},
+  '.card-section'
+);
+
+api.getInitialCards()
+  .then(initialCards => cardSection.renderCards(initialCards))
+  .catch(error => console.log(error));
 
 const profileInfo = new UserInfo({
   titleSelector: profileTitleSelector,
@@ -40,80 +66,40 @@ const profileInfo = new UserInfo({
 profileInfo.setUserInfo({
   titleText: 'Саша Бубнов',
   subtitleText: 'Веб-разработчик',
-  avatarSrc: 'https://sun9-57.userapi.com/impg/PWanIVE9Hcd5q06Dng7JAGgMqjO_bu8lFpq2bQ/UZ4ca3V0dUQ.jpg?size=1080x1080&quality=95&sign=4fa773eefa4fcbe5028871dbee490807&type=album'
 });
+
+profileInfo.setUserAvatar('https://sun9-57.userapi.com/impg/PWanIVE9Hcd5q06Dng7JAGgMqjO_bu8lFpq2bQ/UZ4ca3V0dUQ.jpg?size=1080x1080&quality=95&sign=4fa773eefa4fcbe5028871dbee490807&type=album');
 
 const avatarPopup = new PopupWithForm({
   popupSelector: popupAvatarSelector,
-  handleSubmit: (formData) => {
-    const profile = profileInfo.getUserInfo();
-
-    profileInfo.setUserInfo({
-      titleText: profile.title,
-      subtitleText: profile.subtitle,
-      avatarSrc: formData.avatar
-    });
-
-    avatarPopup.close();
-  }
+  handleSubmit: popupAvatarSubmit
 });
-avatarPopup.setEventListener();
+avatarPopup.setEventListeners();
 
 const editPopup = new PopupWithForm({
   popupSelector: popupEditSelector,
-  handleSubmit: (formData) => {
-    profileInfo.setUserInfo({
-      titleText: formData.title,
-      subtitleText: formData.subtitle
-    });
-
-    editPopup.close();
-  }
+  handleSubmit: popupEditSubmit
 });
-editPopup.setEventListener();
+editPopup.setEventListeners();
 
 const addPopup = new PopupWithForm({
   popupSelector: popupAddSelector,
-  handleSubmit: (formData) => {
-    const cardElement = createCard(formData);
-    cardSection.addItem(cardElement, 'prepend');
-    
-    addPopup.close();
-  }
+  handleSubmit: popupAddSubmit
 });
-addPopup.setEventListener();
+addPopup.setEventListeners();
 
-// const deletePopup = new PopupWithConfirmation({
-//   // popupSelector: popupDeleteSelector,
-//   // handleSubmit: (formData) => {
-//   //   deletePopup.close();
-//   // }
-// });
-// deletePopup.setEventListener();
+const deletePopup = new PopupWithConfirmation({
+  popupSelector: popupDeleteSelector,
+  handleSubmit: asdasdhandleClickDelete
+});
+deletePopup.setEventListeners();
 
 const cardImagePopup = new PopupWithImage(popupImageSelector);
-cardImagePopup.setEventListener();
+cardImagePopup.setEventListeners();
 
-const sectionData = {
-  items: initialCards,
-  renderer: (item) => {
-    cardSection.addItem(
-      createCard(item),
-      'append'
-    );
-  }
-}
-
-const cardSection = new Section(sectionData, '.card-section');
-cardSection.renderItems();
-// api.getInitialCards()
-//   .then( initialCards => cardSection.renderItems())
-//   .catch(error => console.log(error));
-// api.getInitialCards().then(dataTasks => console.log(dataTasks))
-
-const popupAvatarFormValidation = new FormValidator(config, popupAvatarForm);
-const popupEditFormValidation = new FormValidator(config, popupEditForm);
-const popupAddFormValidation = new FormValidator(config, popupAddForm);
+const popupAvatarFormValidation = new FormValidator(ValidationConfig, popupAvatarForm);
+const popupEditFormValidation = new FormValidator(ValidationConfig, popupEditForm);
+const popupAddFormValidation = new FormValidator(ValidationConfig, popupAddForm);
 
 popupAvatarFormValidation.enableValidation();
 popupEditFormValidation.enableValidation();
@@ -138,12 +124,68 @@ popupAddOpenButtonElement.addEventListener('click', function () {
   addPopup.open();
 });
 
+function popupAvatarSubmit(formData) {
+  const profile = profileInfo.getUserInfo();
+
+  profileInfo.setUserAvatar({
+    avatarSrc: formData.avatar
+  });
+
+  avatarPopup.close();
+}
+
+function popupEditSubmit(formData) {
+  const profile = profileInfo.getUserInfo();
+  
+  profileInfo.setUserInfo({
+    titleText: formData.title,
+    subtitleText: formData.subtitle,
+    avatarSrc: profile.avatar
+  });
+
+  editPopup.close();
+}
+
+function popupAddSubmit(formData) {
+  const cardElement = createCard(formData);
+  cardSection.addItem(cardElement, 'prepend');
+
+  addPopup.close();
+}
+
+function popupDeleteSubmit() {
+  // api.removeCard();
+  deletePopup.close();
+}
+
 function createCard(data) {
-  const card = new Card(data, cardTemplateSelector, handleClickImage);
+  const card = new Card(data, cardTemplateSelector, handleClickLike, asdasdhandleClickDelete, handleClickImage);
   const cardElement = card.generate();
-  return cardElement
+  return cardElement;
+}
+
+function handleClickLike(cardLikeButton) {
+  cardLikeButton.classList.toggle('card__like-button_active');
+}
+function handleClickDelete(cardElement) {
+  deletePopup.open();
 }
 
 function handleClickImage(name, link) {
   cardImagePopup.open({ name, link });
+}
+
+
+function asdasdhandleClickDelete(cardElement) {
+  deletePopup.open();
+  deletePopup.setSubmitAction(() => {
+    deletePopup.loading(true)
+    api.removeCard(cardElement.getCardId())
+      .then(() => {
+        cardElement.deleteCard();
+        deletePopup.close()
+      })
+      .catch((err) => console.log(err))
+      .finally(() => deletePopup.loading(false))
+  })
 }

@@ -12,22 +12,40 @@ export default class Api {
       : res.json().then(errorData => Promise.reject(errorData))
   }
 
+  getUserData(userData) {
+    return fetch(`${this.#url}/users/me`, {
+      headers: this.#headers,
+      body: JSON.stringify(userData)
+    })
+      .then(this.#onResponce)
+  }
+
+  editUserProfile(profileData) {
+    return fetch(`${this.#url}/users/me`, {
+      method: 'PATCH',
+      headers: this.#headers,
+      body: JSON.stringify(profileData)
+    })
+      .then(this.#onResponce)
+  }
+
+  editProfileAvatar(avatarData) {
+    return fetch(`${this.#url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this.#headers,
+      body: JSON.stringify(avatarData)
+    })
+      .then(this.#onResponce)
+  }
+
   getInitialCards() {
     return fetch(`${this.#url}/cards`, { headers: this.#headers })
       .then(this.#onResponce)
   }
 
-  // getAllCards() {
-  //   return fetch(`${this._url}/cards`, { headers: this._headers })
-  //     .then(
-  //       this._handleReply
-  //     );
-  // }
-
   getCardById(idCard) {
     return fetch(`${this.#url}/cards/${idCard}`)
       .then(this.#onResponce)
-
   }
 
   removeCard(idCard) {
@@ -35,7 +53,6 @@ export default class Api {
       method: 'DELETE'
     })
       .then(this.#onResponce)
-
   }
 
   addCard(data) {
@@ -45,7 +62,6 @@ export default class Api {
       body: JSON.stringify(data)
     })
       .then(this.#onResponce)
-
   }
 
   editCard(data, idCard) {
@@ -55,7 +71,6 @@ export default class Api {
       body: JSON.stringify(data)
     })
       .then(this.#onResponce)
-
   }
 }
 
