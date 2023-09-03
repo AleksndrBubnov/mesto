@@ -1,12 +1,5 @@
 import './index.css';
-import Api from "../scripts/components/Api.js"
-import Section from "../scripts/components/Section.js";
-import Card from "../scripts/components/Card.js";
-import PopupWithForm from "../scripts/components/PopupWithForm.js"
-import PopupWithImage from "../scripts/components/PopupWithImage.js"
-import PopupWithConfirmation from "../scripts/components/PopupWithConfirmation.js"
-import FormValidator from "../scripts/components/FormValidator.js";
-import UserInfo from "../scripts/components/UserInfo.js";
+
 import {
   popupAvatarOpenButtonElement,
   popupAvatarSelector,
@@ -27,25 +20,36 @@ import {
   ValidationConfig,
 } from "../scripts/utils/constants.js";
 
+import Api from "../scripts/components/Api.js"
+import Section from "../scripts/components/Section.js";
+import Card from "../scripts/components/Card.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js"
+import PopupWithImage from "../scripts/components/PopupWithImage.js"
+import PopupWithConfirmation from "../scripts/components/PopupWithConfirmation.js"
+import FormValidator from "../scripts/components/FormValidator.js";
+import UserInfo from "../scripts/components/UserInfo.js";
+
 const api = new Api(apiConfig);
+
 let userId;
 
-Promise.all([api.getUserData(), api.getInitialCards()])
-  .then(([userData, cardItems]) => {
-    userInfo.setUserInfo(userData);
-    userInfo.setUserAvatar(userData);
-    userId = userData._id;
-    console.log(userId = userData._id);
+const cardSection = new Section(
+  '.card-section',
+  {
+    renderer: (item) => {
+      cardSection.addItem(
+        createCard(item),
+        'append'
+      );
+    }
+  }
+);
 
-    cardSection.renderCards(cardItems)
-  })
-  .catch((err) => console.log(err));
-
-const profileInfo = new UserInfo({
-  titleSelector: profileTitleSelector,
-  subtitleSelector: profileSubtitleSelector,
-  avatarSelector: profileAvatarSelector
-});
+const profileInfo = new UserInfo(
+  profileTitleSelector,
+  profileSubtitleSelector,
+  profileAvatarSelector
+);
 
 // profileInfo.setUserInfo({
 //   titleText: 'Саша Бубнов',
@@ -54,21 +58,29 @@ const profileInfo = new UserInfo({
 
 // profileInfo.setUserAvatar('https://sun9-57.userapi.com/impg/PWanIVE9Hcd5q06Dng7JAGgMqjO_bu8lFpq2bQ/UZ4ca3V0dUQ.jpg?size=1080x1080&quality=95&sign=4fa773eefa4fcbe5028871dbee490807&type=album');
 
-const cardSection = new Section({
-  renderer: (item) => {
-    cardSection.addItem(
-      createCard(item),
-      'append'
-    );
-  }
-},
-  '.card-section'
-);
+// Promise.all([api.getUserData(), api.getInitialCards()])
+//   .then(([userData, cardItems]) => {
+//     profileInfo.setUserInfo(userData);
+//     profileInfo.setUserAvatar(userData);
+//     userId = userData._id;
+//     console.log(userId);
+
+//     cardSection.renderCards(cardItems)
+//   })
+//   .catch((err) => console.log(err));
+
+api.getUserData()
+  .then((userData) => {
+    profileInfo.setUserInfo(userData);
+    profileInfo.setUserAvatar(userData);  
+    userId = userData._id;
+  })
+  .catch((err) => console.log(err));
 
 api.getInitialCards()
   .then(initialCards => cardSection.renderCards(initialCards))
   .catch(error => console.log(error));
-
+  
 const avatarPopup = new PopupWithForm({
   popupSelector: popupAvatarSelector,
   handleSubmit: popupAvatarSubmit
@@ -124,25 +136,21 @@ popupAddOpenButtonElement.addEventListener('click', function () {
 });
 
 function popupAvatarSubmit(formData) {
-  const profile = profileInfo.getUserInfo();
-
-  profileInfo.setUserAvatar({
-    avatarSrc: formData.avatar
-  });
-
-  avatarPopup.close();
+  api.editProfileAvatar(formData)
+    .then(() => {
+      profileInfo.setUserAvatar(formData);
+      editPopup.close();
+    })
+    .catch((err) => console.log(err));
 }
 
 function popupEditSubmit(formData) {
-  const profile = profileInfo.getUserInfo();
-  
-  profileInfo.setUserInfo({
-    titleText: formData.title,
-    subtitleText: formData.subtitle,
-    avatarSrc: profile.avatar
-  });
-
-  editPopup.close();
+  api.editUserProfile(formData)
+    .then(() => {
+      profileInfo.setUserInfo(formData);
+      editPopup.close();
+    })
+    .catch((err) => console.log(err));
 }
 
 function popupAddSubmit(formData) {
@@ -152,13 +160,8 @@ function popupAddSubmit(formData) {
   addPopup.close();
 }
 
-function popupDeleteSubmit() {
-  // api.removeCard();
-  deletePopup.close();
-}
-
 function createCard(data) {
-  const card = new Card(data, cardTemplateSelector, handleClickLike, asdasdhandleClickDelete, handleClickImage);
+  const card = new Card(data, userId, cardTemplateSelector, handleClickLike, asdasdhandleClickDelete, handleClickImage);
   const cardElement = card.generate();
   return cardElement;
 }
@@ -166,14 +169,19 @@ function createCard(data) {
 function handleClickLike(cardLikeButton) {
   cardLikeButton.classList.toggle('card__like-button_active');
 }
-function handleClickDelete(cardElement) {
-  deletePopup.open();
-}
 
 function handleClickImage(name, link) {
   cardImagePopup.open({ name, link });
 }
 
+function popupDeleteSubmit() {
+  // api.removeCard();
+  deletePopup.close();
+}
+
+function handleClickDelete(cardElement) {
+  deletePopup.open();
+}
 
 function asdasdhandleClickDelete(cardElement) {
   deletePopup.open();

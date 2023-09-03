@@ -2,6 +2,7 @@ export default class Card {
   #data;
   #name;
   #link;
+  #userId;
   #template;
   #handleClicklike;
   #handleClickDelete;
@@ -13,10 +14,11 @@ export default class Card {
   #cardLikeButton;
   #cardDeleteButton;
 
-  constructor(data, templateSelector, handleClicklike, handleClickDelete, handleClickImage) {
+  constructor(data, userId, templateSelector, handleClicklike, handleClickDelete, handleClickImage) {
     this.#data = data;
     this.#name = data.name;
     this.#link = data.link;
+    this.#userId = userId;
     this.#template = templateSelector;
     this.#handleClicklike = handleClicklike;
     this.#handleClickDelete = handleClickDelete;

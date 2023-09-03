@@ -1,10 +1,10 @@
 export default class Section {
-  #renderer;
   #containerSelector;
+  #renderer;
 
-  constructor({ renderer }, containerSelector) {
-    this.#renderer = renderer;
+  constructor(containerSelector, { renderer }) {
     this.#containerSelector = document.querySelector(containerSelector);
+    this.#renderer = renderer;
   }
 
   addItem(card, key) {
