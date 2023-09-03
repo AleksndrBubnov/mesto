@@ -31,6 +31,7 @@ const api = new Api(apiConfig);
 
 let userId;
 console.log(api.getUserData());
+// помогите допилить проект, пожалуйста :с
 
 // Promise.all([api.getUserData(), api.getInitialCards()])
 //   .then(([userData, cardItems]) => {
