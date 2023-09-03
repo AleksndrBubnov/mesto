@@ -28,20 +28,31 @@ import {
 } from "../scripts/utils/constants.js";
 
 const api = new Api(apiConfig);
-
 let userId;
-console.log(api.getUserData());
-// помогите допилить проект, пожалуйста :с
 
-// Promise.all([api.getUserData(), api.getInitialCards()])
-//   .then(([userData, cardItems]) => {
-//     userInfo.setUserInfo(userData);
-//     userInfo.setUserAvatar(userData);
-//     userId = userData._id;
+Promise.all([api.getUserData(), api.getInitialCards()])
+  .then(([userData, cardItems]) => {
+    userInfo.setUserInfo(userData);
+    userInfo.setUserAvatar(userData);
+    userId = userData._id;
+    console.log(userId = userData._id);
 
-//     cardSection.renderCards(cardItems)
-//   })
-//   .catch((err) => console.log(err));
+    cardSection.renderCards(cardItems)
+  })
+  .catch((err) => console.log(err));
+
+const profileInfo = new UserInfo({
+  titleSelector: profileTitleSelector,
+  subtitleSelector: profileSubtitleSelector,
+  avatarSelector: profileAvatarSelector
+});
+
+// profileInfo.setUserInfo({
+//   titleText: 'Саша Бубнов',
+//   subtitleText: 'Веб-разработчик',
+// });
+
+// profileInfo.setUserAvatar('https://sun9-57.userapi.com/impg/PWanIVE9Hcd5q06Dng7JAGgMqjO_bu8lFpq2bQ/UZ4ca3V0dUQ.jpg?size=1080x1080&quality=95&sign=4fa773eefa4fcbe5028871dbee490807&type=album');
 
 const cardSection = new Section({
   renderer: (item) => {
@@ -57,19 +68,6 @@ const cardSection = new Section({
 api.getInitialCards()
   .then(initialCards => cardSection.renderCards(initialCards))
   .catch(error => console.log(error));
-
-const profileInfo = new UserInfo({
-  titleSelector: profileTitleSelector,
-  subtitleSelector: profileSubtitleSelector,
-  avatarSelector: profileAvatarSelector
-});
-
-profileInfo.setUserInfo({
-  titleText: 'Саша Бубнов',
-  subtitleText: 'Веб-разработчик',
-});
-
-profileInfo.setUserAvatar('https://sun9-57.userapi.com/impg/PWanIVE9Hcd5q06Dng7JAGgMqjO_bu8lFpq2bQ/UZ4ca3V0dUQ.jpg?size=1080x1080&quality=95&sign=4fa773eefa4fcbe5028871dbee490807&type=album');
 
 const avatarPopup = new PopupWithForm({
   popupSelector: popupAvatarSelector,

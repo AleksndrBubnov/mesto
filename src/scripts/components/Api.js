@@ -48,13 +48,6 @@ export default class Api {
       .then(this.#onResponce)
   }
 
-  removeCard(idCard) {
-    return fetch(`${this.#url}/cards/${idCard}`, {
-      method: 'DELETE'
-    })
-      .then(this.#onResponce)
-  }
-
   addCard(data) {
     return fetch(`${this.#url}/cards`, {
       method: 'POST',
@@ -69,6 +62,13 @@ export default class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify(data)
+    })
+      .then(this.#onResponce)
+  }
+  
+  removeCard(idCard) {
+    return fetch(`${this.#url}/cards/${idCard}`, {
+      method: 'DELETE'
     })
       .then(this.#onResponce)
   }
