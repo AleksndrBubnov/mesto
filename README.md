@@ -3,11 +3,10 @@
 ### Обзор
 * В данном проекте пользователь может отредактировать профиль, создавать карточки красивых мест, оценивать и удалять их.
 
-**Ссылка на Проект**
+
+### Ссылка на Проект
 * [Кликай ^ ^](https://aleksndrbubnov.github.io/mesto/)
 
-### Технологии
-* Проект, пока, написан на "чистом" html, css, js
 
 ### Список изменений
 * Сверстал страницу
@@ -29,3 +28,6 @@
 * [второй](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=50160%3A172)
 * [третий](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
 * [четвёртый](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript.-Sprint-9?type=design&node-id=0-1&mode=design)
+
+### Технологии
+* Проект, пока, написан на "чистом" html, css, js
