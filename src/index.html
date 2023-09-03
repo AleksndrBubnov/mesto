@@ -5,20 +5,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="shortcut icon" href="../images/favicon-32x32.png" type="image/x-icon"> -->
+  <!-- <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon"> -->
   <title>mesto</title>
 </head>
 
 <body class="page">
   <header class="header">
-    <img class="logo" src="<%=require('../images/logo_mesto_russia.svg')%>" alt="место лого">
+    <img class="logo" src="<%=require('./images/logo_mesto_russia.svg')%>" alt="место лого">
   </header>
 
   <main class="content">
     <section class="profile">
       <button class="profile__avatar-button button" aria-label="avatar-button" type="button"></button>
       <img class="profile__avatar" src="https://lh3.googleusercontent.com/ogw/AGvuzYbo5Eyf7UAYMGLyU5yVmvyYDW0sk5Ifqg_rHZmnMQ=s32-c-mo" alt="аватар">
-      <!-- <img class="profile__avatar" src="<%=require('../images/My-profile-image.jpg')%>" alt="фото Жак-Ив Кусто"> -->
       <div class="profile__group">
         <div class="profile__container">
           <h1 class="profile__title"></h1>
@@ -44,7 +43,7 @@
       <div class="popup__container">
         <h2 class="popup__title">Обновить аватар</h2>
         <form class="form" name="popup">
-          <input class="form__input form__input_type_link" placeholder="Ссылка на картинку" type="url" name="avatar"
+          <input id="avatar" class="form__input form__input_type_link" placeholder="Ссылка на картинку" type="url" name="avatar"
             required>
           <span id="avatar-error" class="error"></span>
           <button class="button form__submit" type="submit">Сохранить</button>
@@ -59,10 +58,10 @@
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form" name="popup">
-          <input class="form__input form__input_type_title" minlength="2" maxlength="40" placeholder="Имя" type="text"
+          <input id="name" class="form__input form__input_type_title" minlength="2" maxlength="40" placeholder="Имя" type="text"
             name="name" required>
           <span id="name-error" class="error"></span>
-          <input class="form__input form__input_type_subtitle" minlength="2" maxlength="200" placeholder="О себе"
+          <input id="about" class="form__input form__input_type_subtitle" minlength="2" maxlength="200" placeholder="О себе"
             type="text" name="about" required>
           <span id="about-error" class="error"></span>
           <button class="button form__submit" type="submit">Сохранить</button>
@@ -77,11 +76,9 @@
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
         <form class="form" name="popup">
-          <input class="form__input form__input_type_name" minlength="2" maxlength="30" placeholder="Название"
-            type="text" name="name" required>
-          <span id="name-error" class="error"></span>
-          <input class="form__input form__input_type_link" placeholder="Ссылка на картинку" type="url" name="link"
-            required>
+          <input id="place" class="form__input form__input_type_name" minlength="2" maxlength="30" placeholder="Название" type="text" name="name" required>
+          <span id="place-error" class="error"></span>
+          <input id="link" class="form__input form__input_type_link" placeholder="Ссылка на картинку" type="url" name="link" required>
           <span id="link-error" class="error"></span>
           <button class="button form__submit" type="submit">Создать</button>
         </form>

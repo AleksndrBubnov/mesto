@@ -15,7 +15,7 @@ export default class FormValidator {
 
   resetValidation() {
     this.#inputList.forEach((inputElement) => {
-      const errorElement = this.#formElement.querySelector(`#${inputElement.name}-error`);
+      const errorElement = this.#formElement.querySelector(`#${inputElement.id}-error`);
       this.#hideError(inputElement, errorElement);
     });
   }
@@ -51,7 +51,7 @@ export default class FormValidator {
   
   #checkInputValidity(inputElement, formElement) {
     const isInputValid = inputElement.validity.valid;
-    const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     
     if(!isInputValid){
       this.#showError(inputElement, errorElement);

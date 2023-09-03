@@ -37,22 +37,9 @@ Promise.all([api.getUserData(), api.getInitialCards()])
     profileInfo.setUserInfo(userData);
     profileInfo.setUserAvatar(userData);
     userId = userData._id;
-
     cardSection.renderCards(initialCards)
   })
   .catch((err) => console.log(err));
-
-// api.getUserData()
-//   .then((userData) => {
-//     profileInfo.setUserInfo(userData);
-//     profileInfo.setUserAvatar(userData);
-//     userId = userData._id;
-//   })
-//   .catch((err) => console.log(err));
-
-// api.getInitialCards()
-//   .then(initialCards => cardSection.renderCards(initialCards))
-//   .catch(error => console.log(error));
 
 const cardSection = new Section('.card-section', { renderer: renderCard });
 function renderCard(item) {
