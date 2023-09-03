@@ -4,6 +4,8 @@ export default class PopupWithForm extends Popup {
   #popupElement;
   #formInput;
   #inputList;
+  #formButton;
+  #buttonTextContent;
   #handleSubmit;
 
   constructor({ popupSelector, handleSubmit }) {
@@ -11,6 +13,8 @@ export default class PopupWithForm extends Popup {
     this.#popupElement = document.querySelector(popupSelector);
     this.#formInput = this.#popupElement.querySelector('.form__input');
     this.#inputList = Array.from(this.#popupElement.querySelectorAll('.form__input'));
+    this.#formButton = this.#popupElement.querySelector('.form__submit');
+    this.#buttonTextContent = this.#formButton.textContent;
     this.#handleSubmit = handleSubmit;
   }
 
@@ -27,6 +31,12 @@ export default class PopupWithForm extends Popup {
     });
 
     return values;
+  }
+
+  loading(isLoading) {
+    (isLoading)
+    ? this.#formButton.textContent = 'Загрузка...'
+    : this.#formButton.textContent = `${this.#buttonTextContent}`
   }
 
   close() {

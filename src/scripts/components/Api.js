@@ -48,11 +48,11 @@ export default class Api {
       .then(this.#onResponce)
   }
 
-  addCard(data) {
+  addCard(cardData) {
     return fetch(`${this.#url}/cards`, {
       method: 'POST',
-      headers: this._headers,
-      body: JSON.stringify(data)
+      headers: this.#headers,
+      body: JSON.stringify(cardData)
     })
       .then(this.#onResponce)
   }
@@ -60,7 +60,7 @@ export default class Api {
   editCard(data, idCard) {
     return fetch(`${this.#url}/cards/${idCard}`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: this.#headers,
       body: JSON.stringify(data)
     })
       .then(this.#onResponce)
@@ -68,7 +68,24 @@ export default class Api {
   
   removeCard(idCard) {
     return fetch(`${this.#url}/cards/${idCard}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: this.#headers
+    })
+      .then(this.#onResponce)
+  }
+  
+  likeCard(cardId) {
+    return fetch(`${this.#url}/cards/${cardId}/likes`, {
+      method: 'PUT',
+      headers: this.#headers
+    })
+      .then(this.#onResponce)
+  }
+
+  unlikeCard(cardId) {
+    return fetch(`${this.#url}/cards/${cardId}/likes`, {
+      method: 'DELETE',
+      headers: this.#headers
     })
       .then(this.#onResponce)
   }
