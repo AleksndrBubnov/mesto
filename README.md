@@ -5,7 +5,7 @@
 
 
 ### Ссылка на Проект
-* [Кликай ^ ^](https://aleksndrbubnov.github.io/mesto/)
+* [Кликайте ^ ^](https://aleksndrbubnov.github.io/mesto/)
 
 
 ### Список изменений
@@ -21,7 +21,7 @@
 * Сделал валидацию по конфигурационному объекту
 * Далее я рефакторил код. Раздил его на модули и переписал в ООП парадигме
 
-**Figma**
+### Figma
 
 * По мере развития проект улучшался по следующим макетам:
 * [первый](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1) 
